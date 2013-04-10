@@ -4,3 +4,17 @@
 *.jar
 *.war
 *.ear
+
+#Build and project artifacts
+target
+*~
+.project
+.settings
+.classpath
+${tomcat.share.home}
+${tomcat.repo.home}
+${tomcat.home}
+tomcat-home
+*.iml
+*.ipr
+*.iws
