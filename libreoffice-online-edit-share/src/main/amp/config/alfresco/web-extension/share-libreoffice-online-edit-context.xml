@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+
+<beans>
+	<!-- Add message bundles -->
+	<bean id="rplp.libreoffice.resources"
+		class="org.springframework.extensions.surf.util.ResourceBundleBootstrapComponent">
+		<property name="resourceBundles">
+			<list>
+				<value>alfresco.messages.libreoffice</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- Configure working copy editable action evaluator for LibreOffice online 
+		edit functionality -->
+	<bean id="evaluator.doclib.action.libreoffice.workingCopyEditable"
+		parent="evaluator.doclib.action.chainedMatchAll">
+		<property name="evaluators">
+			<list>
+				<ref bean="evaluator.doclib.action.editableByCurrentUser" />
+				<ref bean="evaluator.doclib.action.isWorkingCopy" />
+			</list>
+		</property>
+	</bean>
+	<!-- Configure not working copy editable action evaluator for LibreOffice 
+		online edit functionality -->
+	<bean id="evaluator.doclib.action.libreoffice.notWorkingCopyEditable"
+		parent="evaluator.doclib.action.chainedMatchAll">
+		<property name="evaluators">
+			<list>
+				<ref bean="evaluator.doclib.action.editableByCurrentUser" />
+				<ref bean="evaluator.doclib.action.isNotWorkingCopy" />
+				<ref bean="evaluator.doclib.action.notCheckedOutAspect" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- Configure editable action evaluator for LibreOffice online edit functionality -->
+	<bean id="evaluator.doclib.action.libreoffice.editable" parent="evaluator.doclib.action.chainedMatchOne">
+		<property name="evaluators">
+			<list>
+				<ref bean="evaluator.doclib.action.libreoffice.workingCopyEditable" />
+				<ref bean="evaluator.doclib.action.libreoffice.notWorkingCopyEditable" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- Configure allowed mime-types for LibreOffice online edit functionality -->
+	<bean id="evaluator.doclib.action.libreoffice.onlineEditMimetype"
+		parent="evaluator.doclib.action.isMimetype">
+		<property name="mimetypes">
+			<list>
+				<value>application/vnd.ms-excel</value>
+				<value>application/vnd.ms-powerpoint</value>
+				<value>application/msword</value>
+				<value>application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</value>
+				<value>application/vnd.openxmlformats-officedocument.presentationml.presentation</value>
+				<value>application/vnd.openxmlformats-officedocument.wordprocessingml.document</value>
+				<value>application/vnd.ms-word.document.macroenabled.12</value>
+				<value>application/vnd.ms-word.template.macroenabled.12</value>
+				<value>application/vnd.ms-excel.sheet.macroenabled.12</value>
+				<value>application/vnd.ms-excel.template.macroenabled.12</value>
+				<value>application/vnd.ms-powerpoint.presentation.macroenabled.12</value>
+				<value>application/vnd.ms-powerpoint.template.macroenabled.12</value>
+				<value>application/vnd.visio</value>
+				<value>application/vnd.oasis.opendocument.presentation</value>
+				<value>application/vnd.oasis.opendocument.spreadsheet</value>
+				<value>application/vnd.oasis.opendocument.text</value>
+			</list>
+		</property>
+	</bean>
+</beans>

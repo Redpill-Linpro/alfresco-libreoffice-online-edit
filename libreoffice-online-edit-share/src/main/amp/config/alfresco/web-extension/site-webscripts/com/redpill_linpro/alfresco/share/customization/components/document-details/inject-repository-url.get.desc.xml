@@ -1,0 +1,5 @@
+<webscript>
+  <shortname>Inject repository url on document details page</shortname>
+  <description>Injects repository url on document details page. Workaround for bug https://issues.alfresco.com/jira/browse/MNT-8639</description>
+  <url>/components/document-details/inject-repository-url</url>
+</webscript> 
