@@ -21,7 +21,7 @@
 				//Chrome and Firefox will come here when applet is loaded
 				handleAppletLoaded();
 			} else {
-				handleAppletNotLoaded();//setTimeout(checkAppletLoaded(), 10000);
+				handleAppletNotLoaded();
 			}
 		} else {
 			handleAppletNotLoaded();
@@ -29,12 +29,10 @@
 	}
 
 	function handleAppletNotLoaded() {
-		//alert("Applet not loaded");
 		setTimeout(checkAppletLoaded, 100);
 	}
 
 	function handleAppletLoaded() {
-		//alert("Applet loaded");
 		window.close();
 	}
 
@@ -50,6 +48,9 @@
 			params[nv[0]] = nv[1] || true;
 		}
 	}
+	
+	//Close the window after 30 seconds if not closed already
+	setTimeout(handleAppletLoaded, 30000);
 </script>
 </head>
 <body onLoad="checkAppletLoaded();">
