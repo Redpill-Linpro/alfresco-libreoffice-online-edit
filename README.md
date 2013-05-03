@@ -1,5 +1,25 @@
-A LibreOffice online edit module for Alfresco
+A LibreOffice Online Edit Module for Alfresco
 =============================================
+
+This module is sponsored by Redpill Linpro AB - http://www.redpill-linpro.com.
+
+Description
+-----------
+
+This module consists of two sub-modules, one module which produces a signed Java applet and the other creates an Alfresco Share customization module.
+
+The Java applet is used to launch LibreOffice and is included in the customization module. After LibreOffice has been launched the applet is closed and everything after that is LibreOffice doing its work.
+
+Compatability
+-------------
+
+The module should be compatible with all Alfresco EE 4.1.x and Alfresco CE 4.2.x or later.
+
+It has been verified to work with Ubuntu Linux (12.10 and 13.04), Windows 7, MacOSX (10.8.3).
+
+Other client requirements for the module are:
+* LibreOffice 4.0 or later is installed
+* Java 1.6 or later available as a browser plugin and that java is allowed to run signed applets.
 
 Building
 --------
