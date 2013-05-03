@@ -12,6 +12,8 @@ The Java applet is used to launch LibreOffice and is included in the customizati
 
 The Java applet is signed using a self-signed certificate. See instructions in the "Building" section on how to sign the build with your own certificates.
 
+Further detailed instructions will be added to the Wiki.
+
 Compatability
 -------------
 
