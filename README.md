@@ -10,6 +10,8 @@ This module consists of two sub-modules, one module which produces a signed Java
 
 The Java applet is used to launch LibreOffice and is included in the customization module. After LibreOffice has been launched the applet is closed and everything after that is LibreOffice doing its work.
 
+The Java applet is signed using a self-signed certificate. See instructions in the "Building" section on how to sign the build with your own certificates.
+
 Compatability
 -------------
 
@@ -33,6 +35,18 @@ Building with maven:
 * mvn clean package
 
 Module is packaged as amp and the resulting amp will end up in ./libreoffice-online-edit-share/target/
+
+Signing the Java applet with your own certificates:
+* To sign the Java applet with your own certificates, create a new keystore and change the configuration in ./libreoffice-online-edit-applet/pom.xml with your own keystore settings and rerun the build script.
+
+```
+  <configuration>
+    <keystore>src/main/keystore/signing-jar.keystore</keystore>
+		<alias>applet</alias>
+		<storepass>applet</storepass>
+		<keypass>applet</keypass>
+	</configuration>
+```
 
 Configuration
 -------------
