@@ -1,0 +1,58 @@
+
+<extension>
+	<modules>
+		<module>
+			<id>LibreOffice Online Edit Module</id>
+			<customizations>
+				<customization>
+					<targetPackageRoot>org.alfresco</targetPackageRoot>
+					<sourcePackageRoot>com.redpill_linpro.alfresco.share.customization</sourcePackageRoot>
+				</customization>
+			</customizations>
+			<configurations>				
+				<config evaluator="string-compare" condition="DocLibCustom">
+					<dependencies>
+						<js src="rplp/components/libreoffice/libreoffice-actions.js" />
+					</dependencies>
+				</config>
+  
+				<config evaluator="string-compare" condition="DocLibActions"
+					replace="false">
+					<actions>
+						<action id="document-edit-online-libreoffice" type="javascript"
+							label="actions.document.edit-online-libreoffice" icon="document-edit-online">
+							<param name="function">onActionLibreOfficeEditOnline</param>
+							<permissions>
+								<permission allow="true">Write</permission>
+							</permissions>
+							<evaluator>evaluator.doclib.action.libreoffice.editable
+							</evaluator>
+							<evaluator>evaluator.doclib.action.libreoffice.onlineEditMimetype
+							</evaluator>
+						</action>
+					</actions>
+					<actionGroups>
+						<actionGroup id="document-browse">
+							<action index="205" id="document-edit-online-libreoffice" />
+						</actionGroup>
+						<actionGroup id="document-details">
+							<action index="205" id="document-edit-online-libreoffice" />
+						</actionGroup>
+					</actionGroups>
+				</config>
+			</configurations>
+			<components>
+				<component>
+					<scope>template</scope>
+					<region-id>document-actions</region-id>
+					<source-id>document-details</source-id>
+					<sub-components>
+						<sub-component id="inject-repository-url" index="100">
+							<url>/components/document-details/inject-repository-url</url>
+						</sub-component>
+					</sub-components>
+				</component>
+			</components>
+		</module>
+	</modules>
+</extension>
