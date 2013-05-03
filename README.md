@@ -74,6 +74,4 @@ This application is licensed under the LGPLv3 License. See the [LICENSE file](LI
 Authors
 -------
 
-Redpill Linpro AB
-
-Marcus Svensson marcus.svensson (at) redpill-linpro.com
+Marcus Svensson - Redpill Linpro AB
