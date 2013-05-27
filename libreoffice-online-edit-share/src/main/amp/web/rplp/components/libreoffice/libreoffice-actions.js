@@ -38,7 +38,7 @@
         // If we do not have the libreOfficeUrl message return an error
         // message
         Alfresco.util.PopupManager.displayMessage({
-          text : this.msg("actions.document.edit-online-libreoffice.nolibreOfficeUrl")
+          text : this.msg("actions.document.edit-online-libreoffice.norepositoryUrl")
         });
         return;
       }
