@@ -11,11 +11,7 @@
 <script>
   function checkAppletLoaded() {
     var applet = document.getElementById("applet");
-    console.log("Applet: " + applet);
-    console.log("Type of applet: " + typeof applet);
-
-    if ((typeof applet == "function" || typeof applet == "object")) {
-      console.log("Applet status: " + applet.status);
+    if ((typeof applet == "function" || typeof applet == "object")) {     
       if (applet.status == 2) {
         handleAppletLoaded();
         return;
