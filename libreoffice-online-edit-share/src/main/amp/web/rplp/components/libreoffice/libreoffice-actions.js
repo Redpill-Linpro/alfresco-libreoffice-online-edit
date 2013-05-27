@@ -33,22 +33,19 @@
         return;
       }
 
-      var repositoryUrl;
-      if (this.options.repositoryUrl === undefined) {
-        if (typeof (RPLP_repositoryUrl) === 'undefined') {
-          // If we do not have the repositoryUrl message return an error
-          // message
-          Alfresco.util.PopupManager.displayMessage({
-            text : this.msg("actions.document.edit-online-libreoffice.norepositoryUrl")
-          });
-          return;
-        }
-        repositoryUrl = RPLP_repositoryUrl;
-      } else {
-        repositoryUrl = this.options.repositoryUrl;
+      var libreOfficeUrl;
+      if (typeof (RPLP_libreOfficeUrl) === 'undefined') {
+        // If we do not have the libreOfficeUrl message return an error
+        // message
+        Alfresco.util.PopupManager.displayMessage({
+          text : this.msg("actions.document.edit-online-libreoffice.nolibreOfficeUrl")
+        });
+        return;
       }
-      var alf_protocol = repositoryUrl.substring(0, repositoryUrl.indexOf("://"));
-      var parse = repositoryUrl.substring(repositoryUrl.indexOf("://") + 3);
+      libreOfficeUrl = RPLP_libreOfficeUrl;
+      
+      var alf_protocol = libreOfficeUrl.substring(0, libreOfficeUrl.indexOf("://"));
+      var parse = libreOfficeUrl.substring(libreOfficeUrl.indexOf("://") + 3);
       var hostnameEnd;
       var portStart = -1;
       if (parse.indexOf(":") > 0) {

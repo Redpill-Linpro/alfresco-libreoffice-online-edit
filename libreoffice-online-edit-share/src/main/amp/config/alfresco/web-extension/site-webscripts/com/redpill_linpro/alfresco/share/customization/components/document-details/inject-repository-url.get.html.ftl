@@ -1,4 +1,4 @@
 <script type="text/javascript">//<![CDATA[
-  <#if repositoryUrl??>var RPLP_repositoryUrl= "${repositoryUrl}";</#if>
+  <#if libreOfficeUrl??>var RPLP_libreOfficeUrl= "${libreOfficeUrl}";</#if>
 //]]></script>
 	

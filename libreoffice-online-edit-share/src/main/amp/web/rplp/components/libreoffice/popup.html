@@ -9,71 +9,70 @@
 <meta http-equiv="PRAGMA" content="NO-CACHE" />
 <title>LibreOffice Launcher</title>
 <script>
-	function checkAppletLoaded() {
-		var applet = document.getElementById("applet");
+  function checkAppletLoaded() {
+    var applet = document.getElementById("applet");
+    console.log("Applet: " + applet);
+    console.log("Type of applet: " + typeof applet);
 
-		if ((typeof applet == "function" || typeof applet == "object")) {
-			if (navigator.userAgent.indexOf("MSIE") != -1) {
-				//IE9 will come here when applet is loaded
-				//handleAppletLoaded();
-			} else if ((applet.isActive !== null && typeof applet.isActive == "function")
-					&& applet.isActive()) {
-				//Chrome and Firefox will come here when applet is loaded
-				handleAppletLoaded();
-			} else {
-				handleAppletNotLoaded();
-			}
-		} else {
-			handleAppletNotLoaded();
-		}
-	}
+    if ((typeof applet == "function" || typeof applet == "object")) {
+      console.log("Applet status: " + applet.status);
+      if (applet.status == 2) {
+        handleAppletLoaded();
+        return;
+      }
+    }
+    handleAppletNotLoaded();
+  }
 
-	function handleAppletNotLoaded() {
-		setTimeout(checkAppletLoaded, 100);
-	}
+  function handleAppletNotLoaded() {
+    setTimeout(checkAppletLoaded, 1000);
+  }
 
-	function handleAppletLoaded() {
-		window.close();
-	}
+  function handleAppletLoaded() {
+    window.close();
+  }
 
-	var params = {};
+  var params = {};
 
-	if (location.search) {
-		var parts = location.search.substring(1).split('&');
+  if (location.search) {
+    var parts = location.search.substring(1).split('&');
 
-		for ( var i = 0; i < parts.length; i++) {
-			var nv = parts[i].split('=');
-			if (!nv[0])
-				continue;
-			params[nv[0]] = nv[1] || true;
-		}
-	}
-	
-	//Close the window after 30 seconds if not closed already
-	setTimeout(handleAppletLoaded, 30000);
+    for ( var i = 0; i < parts.length; i++) {
+      var nv = parts[i].split('=');
+      if (!nv[0])
+        continue;
+      params[nv[0]] = nv[1] || true;
+    }
+  }
+
+  //Close the window after 30 seconds if not closed already
+  setTimeout(handleAppletLoaded, 30000);
 </script>
 </head>
 <body onLoad="checkAppletLoaded();">
+
+	<script src="https://www.java.com/js/deployJava.js"></script>
 	<script>
-		document
-				.write('<object type="application/x-java-applet;version=1.6" width="1" height="1" title="LibreOffice Edit Online Integration" id="applet">');
-		document
-				.write('<param name="code" value="com.redpill_linpro.libreoffice.LibreOfficeLauncherApplet.class">');
-		document
-				.write('<param name="archive" value="libreoffice-${project.version}.jar">');
-		document
-				.write('<param name="ALF_PROTOCOL" value="' + params.alf_protocol + '">');
-		document
-				.write('<param name="ALF_HOSTNAME" value="' + params.alf_hostname + '">');
-		document
-				.write('<param name="ALF_PORT" value="' + params.alf_port + '">');
-		document
-				.write('<param name="ALF_CONTEXT" value="' + params.alf_context + '">');
-		document
-				.write('<param name="ALF_REPOSITORY_ID" value="' + params.alf_repository_id + '">');
-		document
-				.write('<param name="ALF_FILE_PATH" value="'+ params.alf_file_path +'">');
-		document.write('</object>');
-	</script>
+    var attributes = {
+      code : 'com.redpill_linpro.libreoffice.LibreOfficeLauncherApplet.class',
+      archive : 'libreoffice-${project.version}.jar',
+      width : 400,
+      height : 50,
+      id : 'applet'
+    };
+    var parameters = {
+      'ALF_PROTOCOL' : params.alf_protocol,
+      'ALF_HOSTNAME' : params.alf_hostname,
+      'ALF_PORT' : params.alf_port,
+      'ALF_CONTEXT' : params.alf_context,
+      'ALF_REPOSITORY_ID' : params.alf_repository_id,
+      'ALF_FILE_PATH' : params.alf_file_path,
+      'systemvars' : 'jsse.enableSNIExtension=false',
+      'permissions' : 'all-permissions',
+      'java_status_events' : 'true'
+    };
+    var version = '1.6';
+    deployJava.runApplet(attributes, parameters, version);
+  </script>
 </body>
 </html>

@@ -59,9 +59,11 @@ An example configuration:
 Edit (or create the file if it does not exist) tomcat/shared/classes/alfresco/web-extension/share-config-custom.xml
 ```
 <alfresco-config>
-  <config evaluator="string-compare" condition="DocumentLibrary" replace="true">
-    <repository-url>http://localhost:8080/alfresco</repository-url>
-  </config>
+	...
+	<config evaluator="string-compare" condition="DocumentLibrary" replace="true">
+		<libreoffice-cmis-base-url>https://alfresco-local1.alingsas.se/alfresco</libreoffice-cmis-base-url>
+	</config>
+	...
 </alfresco-config>
 ```
 
