@@ -24,7 +24,7 @@ It has been verified to work with Ubuntu Linux (12.10 and 13.04), Windows 7, Mac
 Other client requirements for the module are:
 * LibreOffice 4.0 or later is installed
 * Java 1.6 or later available as a browser plugin and that java is allowed to run signed applets.
-* For Alfresco SSL enpoints, only valid certificates will work. Self signed certificates on the Alfresco side will not work.
+* For Alfresco SSL endpoints, only valid certificates will work. Self signed certificates on the Alfresco side will not work.
 
 Building
 --------
