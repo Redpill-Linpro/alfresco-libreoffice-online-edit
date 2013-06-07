@@ -25,6 +25,7 @@ package com.redpill_linpro.libreoffice;
 import java.applet.Applet;
 
 import javax.swing.JOptionPane;
+
 /**
  * Applet for launching LibreOffice on the Client
  * @author Marcus Svensson <marcus.svensson (at) redpill-linpro.com>
@@ -76,7 +77,6 @@ public class LibreOfficeLauncherApplet extends Applet {
 		
 		System.out.println("Starting LibreOffice");		
 		libreOfficeLauncher.launchLibreOffice(protocol, hostname, port, cmisContext, repositoryId, filePath);
-		
 	}
 
 	public LibreOfficeLauncher getLibreOfficeLauncher() {

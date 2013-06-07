@@ -51,6 +51,26 @@
 							<url>/components/document-details/inject-repository-url</url>
 						</sub-component>
 					</sub-components>
+				</component>				
+				<component>
+					<scope>template</scope>
+					<region-id>documentlist</region-id>
+					<source-id>documentlibrary</source-id>
+					<sub-components>
+						<sub-component id="inject-repository-url" index="100">
+							<url>/components/document-details/inject-repository-url</url>
+						</sub-component>
+					</sub-components>
+				</component>
+				<component>
+					<scope>template</scope>
+					<region-id>documentlist</region-id>
+					<source-id>repository</source-id>
+					<sub-components>
+						<sub-component id="inject-repository-url" index="100">
+							<url>/components/document-details/inject-repository-url</url>
+						</sub-component>
+					</sub-components>
 				</component>
 			</components>
 		</module>

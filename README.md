@@ -24,6 +24,7 @@ It has been verified to work with Ubuntu Linux (12.10 and 13.04), Windows 7, Mac
 Other client requirements for the module are:
 * LibreOffice 4.0 or later is installed
 * Java 1.6 or later available as a browser plugin and that java is allowed to run signed applets.
+* For Alfresco SSL endpoints, only valid certificates will work. Self signed certificates on the Alfresco side will not work.
 
 Building
 --------
@@ -59,9 +60,11 @@ An example configuration:
 Edit (or create the file if it does not exist) tomcat/shared/classes/alfresco/web-extension/share-config-custom.xml
 ```
 <alfresco-config>
-  <config evaluator="string-compare" condition="DocumentLibrary" replace="true">
-    <repository-url>http://localhost:8080/alfresco</repository-url>
-  </config>
+	...
+	<config evaluator="string-compare" condition="DocumentLibrary" replace="true">
+		<libreoffice-cmis-base-url>http://localhost:8080/alfresco</libreoffice-cmis-base-url>
+	</config>
+	...
 </alfresco-config>
 ```
 
