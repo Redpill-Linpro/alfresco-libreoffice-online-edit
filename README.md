@@ -62,7 +62,7 @@ Edit (or create the file if it does not exist) tomcat/shared/classes/alfresco/we
 <alfresco-config>
 	...
 	<config evaluator="string-compare" condition="DocumentLibrary" replace="true">
-		<libreoffice-cmis-base-url>https://alfresco-local1.alingsas.se/alfresco</libreoffice-cmis-base-url>
+		<libreoffice-cmis-base-url>http://localhost:8080/alfresco</libreoffice-cmis-base-url>
 	</config>
 	...
 </alfresco-config>
