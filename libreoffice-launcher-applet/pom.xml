@@ -7,7 +7,7 @@
 		<artifactId>libreoffice-online-edit-parent</artifactId>
 		<version>1.0.2</version>
 	</parent>
-	<artifactId>libreoffice-online-edit-applet</artifactId>
+	<artifactId>libreoffice-launcher-applet</artifactId>
 	<packaging>jar</packaging>
 	<name>Applet for application loading for LibreOffice Edit Online functionality</name>
 	<description>Applet for application loading for LibreOffice Edit Online functionality</description>

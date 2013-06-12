@@ -24,7 +24,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>libreoffice-online-edit-applet</artifactId>
+			<artifactId>libreoffice-launcher-applet</artifactId>
 			<version>${project.version}</version>
 			<scope>provided</scope>
 		</dependency>
@@ -82,7 +82,7 @@
 							<artifactItems>
 								<artifactItem>
 									<groupId>${project.groupId}</groupId>
-									<artifactId>libreoffice-online-edit-applet</artifactId>
+									<artifactId>libreoffice-launcher-applet</artifactId>
 									<version>${project.version}</version>
 									<outputDirectory>${project.build.directory}/${project.build.finalName}/web/rplp/components/libreoffice</outputDirectory>
 									<destFileName>libreoffice-${project.version}.jar</destFileName>

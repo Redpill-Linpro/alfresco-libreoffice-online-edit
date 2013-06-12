@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+ xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>libreoffice-launcher-ff@redpill-linpro.com</em:id>
+    <em:name>${project.name}</em:name>
+    <em:version>${project.version}/em:version>
+    <em:creator>Redpill Linpro AB</em:creator>
+    <em:description>${project.description}</em:description>
+    <em:optionsURL>chrome://libreoffice-launcher-ff/content/options.xul</em:optionsURL>
+    <em:targetApplication>
+      <Description>
+        <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id> <!-- firefox -->
+        <em:minVersion>1.5</em:minVersion>
+        <em:maxVersion>19.9.9.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+  </Description>
+</RDF>
