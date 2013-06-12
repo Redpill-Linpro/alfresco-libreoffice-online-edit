@@ -20,19 +20,66 @@
  * If not, see <http://www.gnu.org/licenses/>.
  */
 
-(function() {
+(function() {  
   YAHOO.Bubbling.fire("registerAction", {
     actionName : "onActionLibreOfficeEditOnline",
     fn : function onActionLibreOfficeEditOnline(file) {
+      
+      
+      var libreOfficeLauncherAppletHandler = function (alf_protocol, alf_hostname, alf_port, alf_context, alf_repository_id, alf_file_path) {    
+        if (!navigator.javaEnabled()) {
+          // Do not go any further if Java is not enabled
+          Alfresco.util.PopupManager.displayMessage({
+            text : this.msg("actions.document.edit-online-libreoffice.nojava")
+          });
+          return;
+        }
+        
+        window.open(Alfresco.constants.URL_RESCONTEXT + "rplp/components/libreoffice/popup.html?alf_protocol=" + alf_protocol + "&alf_hostname=" + alf_hostname + "&alf_port=" + alf_port
+              + "&alf_context=" + alf_context + "&alf_repository_id=" + alf_repository_id + "&alf_file_path=" + alf_file_path, "_blank", 'scrollbars=no,status=no,width=500,height=100,dependent=yes');
+        
+      };
+      
+      var libreOfficeLauncherFfPluginHandler = function (alf_protocol, alf_hostname, alf_port, alf_context, alf_repository_id, alf_file_path) {
+        
+        var filePath = "vnd.libreoffice.cmis://";
+        
+        var cmisSubPath = alf_protocol + "://";
+        cmisSubPath += alf_hostname + ":" + alf_port;
+        cmisSubPath += alf_context + "#";
+        cmisSubPath += alf_repository_id;
+            
+        filePath = filePath + encodeURIComponent(cmisSubPath) + alf_file_path;
+            
+        if (!("createEvent" in document)) {
+          return false; // old browser or IE
+        }
+        try {
+          var element = document.createElement("LaunchLibreOfficeData");
+          element.setAttribute("filePath", filePath);
+          document.documentElement.appendChild(element);
+          var ev = document.createEvent("Events");
+          ev.initEvent("LaunchLibreOfficeEvt", true, false);
+          element.dispatchEvent(ev);
 
-      if (!navigator.javaEnabled()) {
-        // Do not go any further if Java is not enabled
-        Alfresco.util.PopupManager.displayMessage({
-          text : this.msg("actions.document.edit-online-libreoffice.nojava")
-        });
-        return;
-      }
-
+          if (!element.hasAttribute("handled")) {
+            //alert("Could not find LibreOffice Launcher module for Firefox, is it installed?");
+            document.documentElement.removeChild(element);
+            return false;
+          } else {
+            document.documentElement.removeChild(element);
+            return true;
+          }      
+        } catch(e) {
+          // report the error to the browser, so that the more technical
+          // users can look at the technical details
+          return false;
+          //setTimeout(function() { throw e; }, 0);
+          //alert("An error occured while launching LibreOffice");
+        }
+      };
+      
+      
       var libreOfficeUrl;
       if (typeof (RPLP_libreOfficeUrl) === 'undefined') {
         // If we do not have the libreOfficeUrl message return an error
@@ -55,7 +102,6 @@
       } else {
         hostnameEnd = parse.indexOf("/");
       }
-
       var alf_hostname = parse.substring(0, hostnameEnd);
       var alf_port;
       if (portStart != -1) {
@@ -70,16 +116,18 @@
         } else {
           // Unknown port
           alf_port = "0";
-
         }
       }
 
       var alf_context = parse.substring(parse.indexOf("/")) + "/cmisws/RepositoryService?wsdl";
       var alf_repository_id = file.location.repositoryId;
       var alf_file_path = file.webdavUrl.replace("/webdav", "");
-      if (alf_port !== "0") {
-        window.open(Alfresco.constants.URL_RESCONTEXT + "rplp/components/libreoffice/popup.html?alf_protocol=" + alf_protocol + "&alf_hostname=" + alf_hostname + "&alf_port=" + alf_port
-            + "&alf_context=" + alf_context + "&alf_repository_id=" + alf_repository_id + "&alf_file_path=" + alf_file_path, "_blank", 'scrollbars=no,status=no,width=500,height=100,dependent=yes');
+      
+      if (libreOfficeLauncherFfPluginHandler(alf_protocol, alf_hostname, alf_port, alf_context, alf_repository_id, alf_file_path)) {
+        return;
+      } else {
+        //Fall back to applet handling
+        libreOfficeLauncherAppletHandler(alf_protocol, alf_hostname, alf_port, alf_context, alf_repository_id, alf_file_path);        
       }
     }
   });

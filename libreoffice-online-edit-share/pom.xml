@@ -29,9 +29,6 @@
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
-
-	
-
 	<build>
 		<finalName>${project.artifactId}-${project.version}</finalName>
 		<plugins>
@@ -88,6 +85,32 @@
 									<destFileName>libreoffice-${project.version}.jar</destFileName>
 								</artifactItem>
 							</artifactItems>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.6</version>
+				<executions>
+					<execution>
+						<id>copy-xpi</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/${project.build.finalName}/web/rplp/components/libreoffice</outputDirectory>
+							<resources>
+								<resource>
+									<directory>../libreoffice-launcher-ff/target/</directory>
+									<filtering>false</filtering>
+									<includes>
+										<include>libreoffice-launcher-${project.version}.xpi</include>
+									</includes>
+								</resource>
+							</resources>
 						</configuration>
 					</execution>
 				</executions>

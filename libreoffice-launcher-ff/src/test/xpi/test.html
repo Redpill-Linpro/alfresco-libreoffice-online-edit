@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<script type="text/javascript">
+			function LaunchLibreOffice(filePath)
+			{
+			  if (!("createEvent" in document)) {
+			    alert("Firefox 1.5 or later is required"); // old browser or IE
+			  }
+			  try {
+			    var element = document.createElement("LaunchLibreOfficeData");
+			    element.setAttribute("filePath", filePath);
+			    document.documentElement.appendChild(element);
+			    var ev = document.createEvent("Events");
+			    ev.initEvent("LaunchLibreOfficeEvt", true, false);
+			    element.dispatchEvent(ev);
+
+			    if (!element.hasAttribute("handled")) {
+			      alert("Could not find LibreOffice Launcher module for Firefox, is it installed?");
+			    }
+			    document.documentElement.removeChild(element);
+			  } catch(e) {
+			    // report the error to the browser, so that the more technical
+			    // users can look at the technical details    
+			    setTimeout(function() { throw e; }, 0);
+			    alert("An error occured while launching LibreOffice");
+			  }
+			}
+		</script>
+	</head>
+<body>
+
+<a href="javascript:return false;" onclick="LaunchLibreOffice('vnd.libreoffice.cmis://http%3A%2F%2Fcmis.alfresco.com%2Fcmisws%2FRepositoryService%3Fwsdl%23371554cd-ac06-40ba-98b8-e6b60275cca7/mars-test/http-test.odt');">Launch LibreOffice</a>
+<br /><br />
+
+</body>
+</html>

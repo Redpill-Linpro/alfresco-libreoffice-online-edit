@@ -4,7 +4,7 @@
   <Description about="urn:mozilla:install-manifest">
     <em:id>libreoffice-launcher-ff@redpill-linpro.com</em:id>
     <em:name>${project.name}</em:name>
-    <em:version>${project.version}/em:version>
+    <em:version>${project.version}</em:version>
     <em:creator>Redpill Linpro AB</em:creator>
     <em:description>${project.description}</em:description>
     <em:optionsURL>chrome://libreoffice-launcher-ff/content/options.xul</em:optionsURL>
