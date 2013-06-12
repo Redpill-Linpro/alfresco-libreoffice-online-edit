@@ -52,7 +52,8 @@
         filePath = filePath + encodeURIComponent(cmisSubPath) + alf_file_path;
             
         if (!("createEvent" in document)) {
-          return false; // old browser or IE
+          //Old browser or not Firefox
+          return false;
         }
         try {
           var element = document.createElement("LaunchLibreOfficeData");
@@ -63,7 +64,7 @@
           element.dispatchEvent(ev);
 
           if (!element.hasAttribute("handled")) {
-            //alert("Could not find LibreOffice Launcher module for Firefox, is it installed?");
+            //Could not find libreoffice plugin module, or this is not firefox
             document.documentElement.removeChild(element);
             return false;
           } else {
@@ -71,11 +72,7 @@
             return true;
           }      
         } catch(e) {
-          // report the error to the browser, so that the more technical
-          // users can look at the technical details
           return false;
-          //setTimeout(function() { throw e; }, 0);
-          //alert("An error occured while launching LibreOffice");
         }
       };
       
