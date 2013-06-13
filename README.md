@@ -6,11 +6,13 @@ This module is sponsored by Redpill Linpro AB - http://www.redpill-linpro.com.
 Description
 -----------
 
-This module consists of two sub-modules, one module which produces a signed Java applet and the other creates an Alfresco Share customization module.
+This module consists of three sub-modules, one module which produces a signed Java applet, one module which produces a Firefox Addon and the last one creates an Alfresco Share customization module.
 
 The Java applet is used to launch LibreOffice and is included in the customization module. After LibreOffice has been launched the applet is closed and everything after that is LibreOffice doing its work.
 
 The Java applet is signed using a self-signed certificate. See instructions in the "Building" section on how to sign the build with your own certificates.
+
+The Firefox Addon can be used to launch LibreOffice. If installed it will be the first choise for Firefox users. If it not installed, or disabled, the Java applet will be used instead.
 
 Further detailed instructions will be added to the Wiki.
 
@@ -84,6 +86,8 @@ Usage
 -----
 
 After the module has been activated, you should have a new action available to you in the document library and in the document details page. Click it to open the document with LibreOffice.
+
+If you use Firefox you will get a message suggesting that you should download and install the Firefox Addon to launch LibreOffice. If the module is not installed, the fallback solution is to use the Java Applet.
 
 License
 -------
