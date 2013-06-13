@@ -65,17 +65,17 @@
           if (!element.hasAttribute("handled")) {
             // Could not find libreoffice plugin module, or this is not firefox
             document.documentElement.removeChild(element);
-
+            var SLEEP_TIME = 2.5;
             if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
               Alfresco.util.PopupManager.displayMessage({
                 text : Alfresco.util.message("actions.document.edit-online-libreoffice.ff.noplugin", null, Alfresco.constants.URL_RESCONTEXT
                     + "rplp/components/libreoffice/libreoffice-launcher-${project.version}.xpi"),
                 noEscape : true,
-                displayTime : 2.5
+                displayTime : SLEEP_TIME
               });
               
               //Special handling to fall back to applet if firefox is used and addon could not be launched.
-              setTimeout(function() {libreOfficeLauncherAppletHandler(alf_protocol, alf_hostname, alf_port, alf_context, alf_repository_id, alf_file_path);}, 2500);
+              setTimeout(function() {libreOfficeLauncherAppletHandler(alf_protocol, alf_hostname, alf_port, alf_context, alf_repository_id, alf_file_path);}, SLEEP_TIME*1000);
               return true;
             }
             return false;
