@@ -59,7 +59,8 @@
 	<name>Parent project for LibreOffice Online Edit functionality for Alfresco</name>
 
 	<modules>
-		<module>libreoffice-online-edit-applet</module>
+		<module>libreoffice-launcher-applet</module>
+		<module>libreoffice-launcher-ff</module>
 		<module>libreoffice-online-edit-share</module>
 	</modules>
 	

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://libreoffice-launcher-ff/skin/skin.css" type="text/css"?>
+<!DOCTYPE libreoffice-launcher-ff SYSTEM "chrome://libreoffice-launcher-ff/locale/translations.dtd">
+
+<overlay id="libreoffice-launcher-ff-overlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script src="content.js"/>
+
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="libreoffice-launcher-ff-strings" src="chrome://libreoffice-launcher-ff/locale/translations.properties"/>
+  </stringbundleset>
+</overlay>
