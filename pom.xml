@@ -54,7 +54,7 @@
 
 	<groupId>com.redpill-linpro.alfresco.libreoffice</groupId>
 	<artifactId>libreoffice-online-edit-parent</artifactId>
-	<version>1.0.2</version>
+	<version>1.0.3</version>
 	<packaging>pom</packaging>
 	<name>Parent project for LibreOffice Online Edit functionality for Alfresco</name>
 

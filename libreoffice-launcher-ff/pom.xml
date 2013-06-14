@@ -5,13 +5,12 @@
 	<parent>
 		<groupId>com.redpill-linpro.alfresco.libreoffice</groupId>
 		<artifactId>libreoffice-online-edit-parent</artifactId>
-		<version>1.0.2</version>
+		<version>1.0.3</version>
 	</parent>
 	<artifactId>libreoffice-launcher-ff</artifactId>
 	<packaging>pom</packaging>
-	<name>Firefox plugin for launching LibreOffice</name>
-	<description>Firefox plugin for launching LibreOffice</description>
-
+	<name>Firefox Addon for launching LibreOffice</name>
+	<description>Firefox Addon for launching LibreOffice</description>
 	<build>
 		<finalName>libreoffice-launcher-${project.version}</finalName>
 		  
@@ -20,7 +19,7 @@
 	        <directory>src/main/xpi</directory>
 	        <filtering>true</filtering>
 	        <includes>
-	          <include>**/*.rdf</include>
+	          <include>**/*</include>
 	        </includes>
 	      </resource>
      	</resources>

@@ -30,9 +30,14 @@ var launchLibreOffice = {
     if (e.type == "load") {
       Application.console.log("LibreOffice Launcher: Load event called");
       document.addEventListener("LaunchLibreOfficeEvt", this, false, true);
+      document.addEventListener("CheckLibreOfficeVersionEvt", this, false, true);
       this.prefs = Components.classes["@mozilla.org/preferences-service;1"]
          .getService(Components.interfaces.nsIPrefService)
          .getBranch("extensions.libreoffice-launcher-ff.");
+    } else if (e.type == "CheckLibreOfficeVersionEvt") {
+      Application.console.log("LibreOffice Launcher: LibreOffice Check version event called");
+      var data = e.target;
+      data.setAttribute("clientVersion", "${project.version}");
     } else if (e.type == "LaunchLibreOfficeEvt") {
       Application.console.log("LibreOffice Launcher: LibreOffice Launch event called");
       var data = e.target;    

@@ -55,17 +55,18 @@
           return false;
         }
         try {
-          var element = document.createElement("LaunchLibreOfficeData");
-          element.setAttribute("filePath", filePath);
+          // Check version
+          var LATEST_VERSION = "${project.version}";
+          var SLEEP_TIME = 2.5;
+          var element = document.createElement("CheckLibreOfficeVersionData");
+          element.setAttribute("latestVersion", LATEST_VERSION);
           document.documentElement.appendChild(element);
           var ev = document.createEvent("Events");
-          ev.initEvent("LaunchLibreOfficeEvt", true, false);
+          ev.initEvent("CheckLibreOfficeVersionEvt", true, false);
           element.dispatchEvent(ev);
-
-          if (!element.hasAttribute("handled")) {
+          if (!element.hasAttribute("clientVersion")) {
             // Could not find libreoffice plugin module, or this is not firefox
             document.documentElement.removeChild(element);
-            var SLEEP_TIME = 2.5;
             if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
               Alfresco.util.PopupManager.displayMessage({
                 text : Alfresco.util.message("actions.document.edit-online-libreoffice.ff.noplugin", null, Alfresco.constants.URL_RESCONTEXT
@@ -73,14 +74,43 @@
                 noEscape : true,
                 displayTime : SLEEP_TIME
               });
-              
-              //Special handling to fall back to applet if firefox is used and addon could not be launched.
-              setTimeout(function() {libreOfficeLauncherAppletHandler(alf_protocol, alf_hostname, alf_port, alf_context, alf_repository_id, alf_file_path);}, SLEEP_TIME*1000);
+
+              // Special handling to fall back to applet if firefox is used and
+              // addon could not be launched.
+              setTimeout(function() {
+                libreOfficeLauncherAppletHandler(alf_protocol, alf_hostname, alf_port, alf_context, alf_repository_id, alf_file_path);
+              }, SLEEP_TIME * 1000);
               return true;
             }
             return false;
           } else {
+            var clientVersion = element.getAttribute("clientVersion");
+            //Todo add proper version check so that we compare the numbers
+            if (LATEST_VERSION != clientVersion) {
+              Alfresco.util.PopupManager.displayMessage({
+                text : Alfresco.util.message("actions.document.edit-online-libreoffice.ff.update", null, Alfresco.constants.URL_RESCONTEXT
+                    + "rplp/components/libreoffice/libreoffice-launcher-${project.version}.xpi"),
+                noEscape : true,
+                displayTime : SLEEP_TIME
+              });
+
+            }
             document.documentElement.removeChild(element);
+
+            setTimeout(function() {
+              var element = document.createElement("LaunchLibreOfficeData");
+              element.setAttribute("filePath", filePath);
+              document.documentElement.appendChild(element);
+              var ev = document.createEvent("Events");
+              ev.initEvent("LaunchLibreOfficeEvt", true, false);
+              element.dispatchEvent(ev);
+              if (!element.hasAttribute("handled")) {
+                document.documentElement.removeChild(element);
+                libreOfficeLauncherAppletHandler(alf_protocol, alf_hostname, alf_port, alf_context, alf_repository_id, alf_file_path);
+              } else {
+                document.documentElement.removeChild(element);                
+              }
+            }, SLEEP_TIME * 1000);
             return true;
           }
         } catch (e) {
