@@ -86,6 +86,7 @@
           } else {
             var clientVersion = element.getAttribute("clientVersion");
             //Todo add proper version check so that we compare the numbers
+            var sleep = 1;
             if (LATEST_VERSION != clientVersion) {
               Alfresco.util.PopupManager.displayMessage({
                 text : Alfresco.util.message("actions.document.edit-online-libreoffice.ff.update", null, Alfresco.constants.URL_RESCONTEXT
@@ -93,7 +94,7 @@
                 noEscape : true,
                 displayTime : SLEEP_TIME
               });
-
+              sleep = SLEEP_TIME * 1000;             
             }
             document.documentElement.removeChild(element);
 
@@ -110,7 +111,7 @@
               } else {
                 document.documentElement.removeChild(element);                
               }
-            }, SLEEP_TIME * 1000);
+            }, sleep);
             return true;
           }
         } catch (e) {

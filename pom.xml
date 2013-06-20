@@ -63,7 +63,7 @@
 		<module>libreoffice-launcher-ff</module>
 		<module>libreoffice-online-edit-share</module>
 	</modules>
-	
+
 	<developers>
 		<developer>
 			<id>marcus.svensson</id>
@@ -94,9 +94,13 @@
 		<url>https://github.com/Redpill-Linpro/alfresco-libreoffice-online-edit/issues</url>
 	</issueManagement>
 	<distributionManagement>
-		<repository />
-		<snapshotRepository />
-		<site />
+		<repository>
+			<id>-</id>
+			<url>-</url>
+		</repository>
+		<snapshotRepository>
+			<id>-</id>
+			<url>-</url>
+		</snapshotRepository>
 	</distributionManagement>
-
 </project>
