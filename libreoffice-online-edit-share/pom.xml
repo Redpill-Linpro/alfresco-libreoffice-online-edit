@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>com.redpill-linpro.alfresco.libreoffice</groupId>
 		<artifactId>libreoffice-online-edit-parent</artifactId>
-		<version>1.0.3</version>
+		<version>1.1.0</version>
 	</parent>
 	<artifactId>libreoffice-online-edit-share</artifactId>
 	<packaging>amp</packaging>
