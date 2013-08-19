@@ -1,0 +1,5 @@
+content	libreoffice-launcher-ff	chrome/libreoffice-launcher-ff/content/
+locale	libreoffice-launcher-ff	en-US chrome/libreoffice-launcher-ff/locale/en-US/
+skin	libreoffice-launcher-ff	classic/1.0	chrome/libreoffice-launcher-ff/skin/
+
+overlay	chrome://browser/content/browser.xul chrome://libreoffice-launcher-ff/content/browser.xul
