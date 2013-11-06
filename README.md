@@ -16,7 +16,7 @@ The Firefox Addon can be used to launch LibreOffice. If installed it will be the
 
 Further detailed instructions will be added to the Wiki.
 
-Compatability
+Compatibility
 -------------
 
 The module should be compatible with all Alfresco EE 4.1.x and Alfresco CE 4.2.x or later.
