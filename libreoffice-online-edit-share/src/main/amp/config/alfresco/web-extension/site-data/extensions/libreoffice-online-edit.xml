@@ -9,13 +9,13 @@
 					<sourcePackageRoot>com.redpill_linpro.alfresco.share.customization</sourcePackageRoot>
 				</customization>
 			</customizations>
-			<configurations>				
+			<configurations>
 				<config evaluator="string-compare" condition="DocLibCustom">
 					<dependencies>
 						<js src="rplp/components/libreoffice/libreoffice-actions.js" />
 					</dependencies>
 				</config>
-  
+
 				<config evaluator="string-compare" condition="DocLibActions"
 					replace="false">
 					<actions>
@@ -51,7 +51,7 @@
 							<url>/components/document-details/inject-repository-url</url>
 						</sub-component>
 					</sub-components>
-				</component>				
+				</component>
 				<component>
 					<scope>template</scope>
 					<region-id>documentlist</region-id>
@@ -65,6 +65,28 @@
 				<component>
 					<scope>template</scope>
 					<region-id>documentlist</region-id>
+					<source-id>repository</source-id>
+					<sub-components>
+						<sub-component id="inject-repository-url" index="100">
+							<url>/components/document-details/inject-repository-url</url>
+						</sub-component>
+					</sub-components>
+				</component>
+
+				<!-- For new Alfresco 4.2 versions -->
+				<component>
+					<scope>template</scope>
+					<region-id>documentlist_v2</region-id>
+					<source-id>documentlibrary</source-id>
+					<sub-components>
+						<sub-component id="inject-repository-url" index="100">
+							<url>/components/document-details/inject-repository-url</url>
+						</sub-component>
+					</sub-components>
+				</component>
+				<component>
+					<scope>template</scope>
+					<region-id>documentlist_v2</region-id>
 					<source-id>repository</source-id>
 					<sub-components>
 						<sub-component id="inject-repository-url" index="100">
