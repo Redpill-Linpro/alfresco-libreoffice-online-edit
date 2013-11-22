@@ -19,9 +19,9 @@ Further detailed instructions will be added to the Wiki.
 Compatibility
 -------------
 
-The module should be compatible with all Alfresco EE 4.1.x and Alfresco CE 4.2.x or later.
+The module is tested with Alfresco Enterprise 4.2.0 but should work with other versions of Alfresco Enterprise and Community.
 
-It has been verified to work with Ubuntu Linux (12.10 and 13.04), Windows 7, MacOSX (10.8.3).
+It has been verified to work with Ubuntu Linux (13.10), Windows 7, MacOSX (10.8.3).
 
 Other client requirements for the module are:
 * LibreOffice 4.0 or later is installed
