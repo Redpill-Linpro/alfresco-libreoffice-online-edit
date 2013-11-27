@@ -19,19 +19,19 @@ Further detailed instructions will be added to the Wiki.
 Compatibility
 -------------
 
-The module is tested with Alfresco Enterprise 4.2.0 but should work with other versions of Alfresco Enterprise and Community.
+The module is tested with Alfresco Enterprise 4.2.0 but may work with other versions of Alfresco Enterprise and Community.
 
 It has been verified to work with Ubuntu Linux (13.10), Windows 7, MacOSX (10.8.3).
 
-Other client requirements for the module are:
-* LibreOffice 4.0 or later is installed
-* Java 1.6 or later available as a browser plugin and that java is allowed to run signed applets.
+Other client requirements for the module are (other versions may work but is untested):
+* LibreOffice 4.1 is installed
+* Java 1.7 available as a browser plugin and that java is allowed to run signed applets.
 * For Alfresco SSL endpoints, only valid certificates will work. Self signed certificates on the Alfresco side will not work.
 
 Building
 --------
 
-This module is based on the Alfresco Maven SDK and requires Maven >= 3.0.4, a Java 1.6 compatible compiler (eg. Oracle JDK or OpenJDK). You will also need git to clone the repository. The master branch will always hold the latest stable version of the module. 
+This module is based on the Alfresco Maven SDK and requires Maven >= 3.0.4, a Java 1.7 compatible compiler (eg. Oracle JDK or OpenJDK). You will also need git to clone the repository. The master branch will always hold the latest stable version of the module. 
 
 Cloning the repository:
 * git clone git://github.com/Redpill-Linpro/alfresco-libreoffice-online-edit.git
@@ -56,19 +56,23 @@ Signing the Java applet with your own certificates:
 Configuration
 -------------
 
-This module relies on that the Alfresco Share setting "repository-url" is set in the Alfresco Share configuration.
+This module relies on that the Alfresco Share setting "libreoffice-cmis-base-url" is set in the Alfresco Share configuration.
 
 An example configuration:
-Edit (or create the file if it does not exist) tomcat/shared/classes/alfresco/web-extension/share-config-custom.xml
+Edit (or create the file if it does not exist) tomcat/shared/classes/alfresco/web-extension/share-config-custom.xml.
+
+Please note that this section has changed since the 1.1.0 release of this module. This setting now points to the cmis endpoint to use, not the Alfresco context.
+
 ```
 <alfresco-config>
 	...
 	<config evaluator="string-compare" condition="DocumentLibrary" replace="true">
-		<libreoffice-cmis-base-url>http://localhost:8080/alfresco</libreoffice-cmis-base-url>
+		<libreoffice-cmis-base-url>http://localhost:8080/alfresco/api/-default-/public/cmis/versions/1.0/atom</libreoffice-cmis-base-url>
 	</config>
 	...
 </alfresco-config>
 ```
+
 
 Installation
 ------------
@@ -88,6 +92,10 @@ Usage
 After the module has been activated, you should have a new action available to you in the document library and in the document details page. Click it to open the document with LibreOffice.
 
 If you use Firefox you will get a message suggesting that you should download and install the Firefox Addon to launch LibreOffice. If the module is not installed, the fallback solution is to use the Java Applet.
+
+Known issues
+------------
+Currently LibreOffice has a bug which prevents checking out documents from within LibreOffice. Checking out the document in Alfresco first and then starting editing of it will work.
 
 License
 -------

@@ -3,6 +3,7 @@
 	<modules>
 		<module>
 			<id>LibreOffice Online Edit Module</id>
+			<version>${project.version}</version>
 			<customizations>
 				<customization>
 					<targetPackageRoot>org.alfresco</targetPackageRoot>

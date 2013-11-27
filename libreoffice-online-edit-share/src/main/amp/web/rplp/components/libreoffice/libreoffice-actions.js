@@ -25,7 +25,7 @@
     actionName : "onActionLibreOfficeEditOnline",
     fn : function onActionLibreOfficeEditOnline(file) {
 
-      var libreOfficeLauncherAppletHandler = function(alf_protocol, alf_hostname, alf_port, alf_context, alf_repository_id, alf_file_path) {
+      var libreOfficeLauncherAppletHandler = function(alf_cmis_url, alf_repository_id, alf_file_path) {
         if (!navigator.javaEnabled()) {
           // Do not go any further if Java is not enabled
           Alfresco.util.PopupManager.displayMessage({
@@ -34,18 +34,15 @@
           return;
         }
 
-        window.open(Alfresco.constants.URL_RESCONTEXT + "rplp/components/libreoffice/popup.html?alf_protocol=" + alf_protocol + "&alf_hostname=" + alf_hostname + "&alf_port=" + alf_port
-            + "&alf_context=" + alf_context + "&alf_repository_id=" + alf_repository_id + "&alf_file_path=" + alf_file_path, "_blank", 'scrollbars=no,status=no,width=500,height=100,dependent=yes');
+        window.open(Alfresco.constants.URL_RESCONTEXT + "rplp/components/libreoffice/popup.html?alf_cmis_url=" + alf_cmis_url + "&alf_repository_id=" + alf_repository_id + "&alf_file_path=" + alf_file_path, "_blank", 'scrollbars=no,status=no,width=500,height=100,dependent=yes');
 
       };
 
-      var libreOfficeLauncherFfPluginHandler = function(alf_protocol, alf_hostname, alf_port, alf_context, alf_repository_id, alf_file_path) {
+      var libreOfficeLauncherFfPluginHandler = function(alf_cmis_url, alf_repository_id, alf_file_path) {
 
         var filePath = "vnd.libreoffice.cmis://";
 
-        var cmisSubPath = alf_protocol + "://";
-        cmisSubPath += alf_hostname + ":" + alf_port;
-        cmisSubPath += alf_context + "#";
+        var cmisSubPath = alf_cmis_url + "#";
         cmisSubPath += alf_repository_id;
 
         filePath = filePath + encodeURIComponent(cmisSubPath) + alf_file_path;
@@ -57,7 +54,7 @@
         try {
           // Check version
           var LATEST_VERSION = "${project.version}";
-          var SLEEP_TIME = 2.5;
+          var SLEEP_TIME = 5;
           var element = document.createElement("CheckLibreOfficeVersionData");
           element.setAttribute("latestVersion", LATEST_VERSION);
           document.documentElement.appendChild(element);
@@ -78,7 +75,7 @@
               // Special handling to fall back to applet if firefox is used and
               // addon could not be launched.
               setTimeout(function() {
-                libreOfficeLauncherAppletHandler(alf_protocol, alf_hostname, alf_port, alf_context, alf_repository_id, alf_file_path);
+                libreOfficeLauncherAppletHandler(alf_cmis_url, alf_repository_id, alf_file_path);
               }, SLEEP_TIME * 1000);
               return true;
             }
@@ -107,7 +104,7 @@
               element.dispatchEvent(ev);
               if (!element.hasAttribute("handled")) {
                 document.documentElement.removeChild(element);
-                libreOfficeLauncherAppletHandler(alf_protocol, alf_hostname, alf_port, alf_context, alf_repository_id, alf_file_path);
+                libreOfficeLauncherAppletHandler(alf_cmis_url, alf_repository_id, alf_file_path);
               } else {
                 document.documentElement.removeChild(element);                
               }
@@ -130,43 +127,21 @@
       }
       libreOfficeUrl = RPLP_libreOfficeUrl;
 
-      var alf_protocol = libreOfficeUrl.substring(0, libreOfficeUrl.indexOf("://"));
-      var parse = libreOfficeUrl.substring(libreOfficeUrl.indexOf("://") + 3);
-      var hostnameEnd;
-      var portStart = -1;
-      if (parse.indexOf(":") > 0) {
-        // We have a port in the definition
-        hostnameEnd = parse.indexOf(":");
-        portStart = hostnameEnd + 1;
+      
+      var alf_cmis_url = libreOfficeUrl;
+      var alf_repository_id;
+      if (alf_cmis_url.indexOf("-default-/public/cmis/versions/1.0/atom")!==-1 || alf_cmis_url.indexOf("-default-/public/cmis/versions/1.1/atom")!==-1) {
+        alf_repository_id = "-default-";
       } else {
-        hostnameEnd = parse.indexOf("/");
+        alf_repository_id = file.location.repositoryId;
       }
-      var alf_hostname = parse.substring(0, hostnameEnd);
-      var alf_port;
-      if (portStart != -1) {
-        // Port defined
-        alf_port = parse.substring(portStart, parse.indexOf("/"));
-      } else {
-        // Default ports
-        if (alf_protocol === "http") {
-          alf_port = "80";
-        } else if (alf_protocol === "https") {
-          alf_port = "443";
-        } else {
-          // Unknown port
-          alf_port = "0";
-        }
-      }
-
-      var alf_context = parse.substring(parse.indexOf("/")) + "/cmisws/RepositoryService?wsdl";
-      var alf_repository_id = file.location.repositoryId;
       var alf_file_path = file.webdavUrl.replace("/webdav", "");
 
-      if (libreOfficeLauncherFfPluginHandler(alf_protocol, alf_hostname, alf_port, alf_context, alf_repository_id, alf_file_path)) {
+      if (libreOfficeLauncherFfPluginHandler(alf_cmis_url, alf_repository_id, alf_file_path)) {
         return;
       } else {
         // Fall back to applet handling
-        libreOfficeLauncherAppletHandler(alf_protocol, alf_hostname, alf_port, alf_context, alf_repository_id, alf_file_path);
+        libreOfficeLauncherAppletHandler(alf_cmis_url, alf_repository_id, alf_file_path);
       }
     }
   });

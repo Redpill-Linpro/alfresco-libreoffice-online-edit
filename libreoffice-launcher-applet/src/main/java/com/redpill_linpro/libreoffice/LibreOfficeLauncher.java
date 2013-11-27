@@ -24,23 +24,19 @@ package com.redpill_linpro.libreoffice;
 
 /**
  * Interface for LibreOffice Launcher
+ * 
  * @author Marcus Svensson <marcus.svensson (at) redpill-linpro.com>
- *
+ * 
  */
 public interface LibreOfficeLauncher {
 
-	/**
-	 * Launch libre office, different implementations for every operating system
-	 * is required
-	 * 
-	 * @param protocol
-	 * @param hostname
-	 * @param port
-	 * @param cmisContext
-	 * @param repositoryId
-	 * @param filePath
-	 */
-	public void launchLibreOffice(String protocol, String hostname,
-			String port, String cmisContext, String repositoryId,
-			String filePath);
+  /**
+   * Launch libre office, different implementations for every operating system
+   * is required
+   * 
+   * @param cmisUrl
+   * @param repositoryId
+   * @param filePath
+   */
+  public void launchLibreOffice(String cmisUrl, String repositoryId, String filePath);
 }

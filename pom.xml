@@ -1,106 +1,166 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-	<modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<groupId>org.alfresco.maven</groupId>
-		<artifactId>alfresco-sdk-parent</artifactId>
-		<version>1.0.2</version>
-	</parent>
-	<!-- Here we realize the connection with the Alfresco selected platform 
-		(e.g.version and edition) -->
-	<dependencyManagement>
-		<dependencies>
-			<!-- This will import the dependencyManagement for all artifacts in the 
-				selected Alfresco plaftorm (see http://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#Importing_Dependencies) 
-				NOTE: You still need to define dependencies in your POM, but you can omit 
-				version as it's enforced by this dependencyManagement. NOTE: It defaults 
-				to the latest version this SDK pom has been tested with, but alfresco version 
-				can/should be overridden in your project's pom -->
-			<dependency>
-				<groupId>${alfresco.groupId}</groupId>
-				<artifactId>alfresco-platform-distribution</artifactId>
-				<version>${alfresco.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
+  <parent>
+    <groupId>org.alfresco.maven</groupId>
+    <artifactId>alfresco-sdk-parent</artifactId>
+    <version>1.1.1</version>
+  </parent>
+  <!-- Here we realize the connection with the Alfresco selected platform (e.g.version and edition) -->
+  <dependencyManagement>
+    <dependencies>
+      <!-- This will import the dependencyManagement for all artifacts in the selected Alfresco plaftorm (see http://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#Importing_Dependencies) NOTE: You still need to define dependencies in your POM, but you can omit version 
+        as it's enforced by this dependencyManagement. NOTE: It defaults to the latest version this SDK pom has been tested with, but alfresco version can/should be overridden in your project's pom -->
+      <dependency>
+        <groupId>${alfresco.groupId}</groupId>
+        <artifactId>alfresco-platform-distribution</artifactId>
+        <version>${alfresco.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
-	<!-- No more repos are needed since they will be inherited by the parent 
-		POM. This is needed to download the alfresco-plaftorm POM. -->
-	<repositories>
-		<repository>
-			<id>alfresco-artifacts</id>
-			<url>https://artifacts.alfresco.com/nexus/content/groups/public</url>
-		</repository>
-		<repository>
-			<id>alfresco-artifacts-snapshots</id>
-			<url>https://artifacts.alfresco.com/nexus/content/groups/public-snapshots</url>
-		</repository>
-	</repositories>
+  <!-- No more repos are needed since they will be inherited by the parent POM. This is needed to download the alfresco-plaftorm POM. -->
+  <repositories>
+    <repository>
+      <id>alfresco-artifacts</id>
+      <url>https://artifacts.alfresco.com/nexus/content/groups/public</url>
+    </repository>
+    <repository>
+      <id>alfresco-artifacts-snapshots</id>
+      <url>https://artifacts.alfresco.com/nexus/content/groups/public-snapshots</url>
+    </repository>
+  </repositories>
 
-	<properties>
-		<alfresco.groupId>org.alfresco</alfresco.groupId>
-		<alfresco.version>4.2.c</alfresco.version>
-		<app.log.root.level>WARN</app.log.root.level>
-		<alfresco.data.location>alf_data_dev</alfresco.data.location>
-		<!-- This controls which properties will be picked in src/test/properties 
-			for embedded run -->
-		<env>local</env>
-	</properties>
+  <properties>
+    <alfresco.groupId>org.alfresco</alfresco.groupId>
+    <alfresco.version>4.2.e</alfresco.version>
+    <app.log.root.level>WARN</app.log.root.level>
+    <alfresco.data.location>alf_data_dev</alfresco.data.location>
+    <!-- This controls which properties will be picked in src/test/properties for embedded run -->
+    <env>local</env>
+  </properties>
 
-	<groupId>com.redpill-linpro.alfresco.libreoffice</groupId>
-	<artifactId>libreoffice-online-edit-parent</artifactId>
-	<version>1.1.0</version>
-	<packaging>pom</packaging>
-	<name>Parent project for LibreOffice Online Edit functionality for Alfresco</name>
+  <groupId>com.redpill-linpro.alfresco.libreoffice</groupId>
+  <artifactId>libreoffice-online-edit-parent</artifactId>
+  <version>1.2.0</version>
+  <packaging>pom</packaging>
+  <name>Parent project for LibreOffice Online Edit functionality for Alfresco</name>
 
-	<modules>
-		<module>libreoffice-launcher-applet</module>
-		<module>libreoffice-launcher-ff</module>
-		<module>libreoffice-online-edit-share</module>
-	</modules>
+  <modules>
+    <module>libreoffice-launcher-applet</module>
+    <module>libreoffice-launcher-ff</module>
+    <module>libreoffice-online-edit-share</module>
+  </modules>
 
-	<developers>
-		<developer>
-			<id>marcus.svensson</id>
-			<name>Marcus Svensson</name>
-			<email>marcus.svensson (at) redpill-linpro.com</email>
-			<organization>Redpill Linpro AB</organization>
-			<organizationUrl>http://www.redpill-linpro.com</organizationUrl>
-			<roles>
-				<role>Founder</role>
-				<role>Architect</role>
-				<role>Developer</role>
-			</roles>
-			<timezone>+1</timezone>
-		</developer>
-	</developers>
+  <developers>
+    <developer>
+      <id>marcus.svensson</id>
+      <name>Marcus Svensson</name>
+      <email>marcus.svensson (at) redpill-linpro.com</email>
+      <organization>Redpill Linpro AB</organization>
+      <organizationUrl>http://www.redpill-linpro.com</organizationUrl>
+      <roles>
+        <role>Founder</role>
+        <role>Architect</role>
+        <role>Developer</role>
+      </roles>
+      <timezone>+1</timezone>
+    </developer>
+  </developers>
 
-	<contributors>
-		<contributor />
-	</contributors>
+  <contributors>
+    <contributor />
+  </contributors>
 
-	<scm>
-		<connection>git://github.com/Redpill-Linpro/alfresco-libreoffice-online-edit.git</connection>
-		<developerConnection>git://github.com/Redpill-Linpro/alfresco-libreoffice-online-edit.git</developerConnection>
-		<url>git://github.com/Redpill-Linpro/alfresco-libreoffice-online-edit.git</url>
-	</scm>
-	<issueManagement>
-		<system>GitHub</system>
-		<url>https://github.com/Redpill-Linpro/alfresco-libreoffice-online-edit/issues</url>
-	</issueManagement>
-	<distributionManagement>
-		<repository>
-			<id>-</id>
-			<url>-</url>
-		</repository>
-		<snapshotRepository>
-			<id>-</id>
-			<url>-</url>
-		</snapshotRepository>
-	</distributionManagement>
+  <scm>
+    <connection>git://github.com/Redpill-Linpro/alfresco-libreoffice-online-edit.git</connection>
+    <developerConnection>git://github.com/Redpill-Linpro/alfresco-libreoffice-online-edit.git</developerConnection>
+    <url>git://github.com/Redpill-Linpro/alfresco-libreoffice-online-edit.git</url>
+  </scm>
+  <issueManagement>
+    <system>GitHub</system>
+    <url>https://github.com/Redpill-Linpro/alfresco-libreoffice-online-edit/issues</url>
+  </issueManagement>
+  <distributionManagement>
+    <repository>
+      <id>-</id>
+      <url>-</url>
+    </repository>
+    <snapshotRepository>
+      <id>-</id>
+      <url>-</url>
+    </snapshotRepository>
+  </distributionManagement>
+
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.9</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-changelog-plugin</artifactId>
+        <version>2.2</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <version>3.0.1</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-report-plugin</artifactId>
+        <version>2.15</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jxr-plugin</artifactId>
+        <version>2.3</version>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>findbugs-maven-plugin</artifactId>
+        <version>2.5.2</version>
+      </plugin>
+    </plugins>
+  </reporting>
+  <profiles>
+    <!-- Jenkins by default defines a property BUILD_NUMBER which is used to enable the profile. -->
+    <profile>
+      <id>jenkins</id>
+      <activation>
+        <property>
+          <name>env.BUILD_NUMBER</name>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>cobertura-maven-plugin</artifactId>
+            <version>2.6</version>
+            <configuration>
+              <formats>
+                <format>xml</format>
+              </formats>
+            </configuration>
+            <executions>
+              <execution>
+                <phase>package</phase>
+                <goals>
+                  <goal>cobertura</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>

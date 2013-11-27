@@ -51,18 +51,22 @@
 		parent="evaluator.doclib.action.isMimetype">
 		<property name="mimetypes">
 			<list>
-				<!-- MS Office formats are now disabled by default since there exist 
-					bugs in LibreOffice which prevents these from being edited properly see: 
+				<!-- There currently are some issues witht he MS Office formats as outlined in:
 					https://github.com/Redpill-Linpro/alfresco-libreoffice-online-edit/issues/2 
-					Uncomment below to activate experimental support for them. -->
-				<!-- <value>application/vnd.ms-excel</value> <value>application/vnd.ms-powerpoint</value> 
-					<value>application/msword</value> <value>application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</value> 
-					<value>application/vnd.openxmlformats-officedocument.presentationml.presentation</value> 
-					<value>application/vnd.openxmlformats-officedocument.wordprocessingml.document</value> 
-					<value>application/vnd.ms-word.document.macroenabled.12</value> <value>application/vnd.ms-word.template.macroenabled.12</value> 
-					<value>application/vnd.ms-excel.sheet.macroenabled.12</value> <value>application/vnd.ms-excel.template.macroenabled.12</value> 
-					<value>application/vnd.ms-powerpoint.presentation.macroenabled.12</value> 
-					<value>application/vnd.ms-powerpoint.template.macroenabled.12</value> <value>application/vnd.visio</value> -->
+					Comment out to deactivate -->
+				<value>application/vnd.ms-excel</value>
+				<value>application/vnd.ms-powerpoint</value>
+				<value>application/msword</value>
+				<value>application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</value>
+				<value>application/vnd.openxmlformats-officedocument.presentationml.presentation</value>
+				<value>application/vnd.openxmlformats-officedocument.wordprocessingml.document</value>
+				<value>application/vnd.ms-word.document.macroenabled.12</value>
+				<value>application/vnd.ms-word.template.macroenabled.12</value>
+				<value>application/vnd.ms-excel.sheet.macroenabled.12</value>
+				<value>application/vnd.ms-excel.template.macroenabled.12</value>
+				<value>application/vnd.ms-powerpoint.presentation.macroenabled.12</value>
+				<value>application/vnd.ms-powerpoint.template.macroenabled.12</value>
+				<value>application/vnd.visio</value>
 				<value>application/vnd.oasis.opendocument.presentation</value>
 				<value>application/vnd.oasis.opendocument.spreadsheet</value>
 				<value>application/vnd.oasis.opendocument.text</value>
