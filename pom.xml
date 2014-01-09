@@ -4,34 +4,19 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>org.alfresco.maven</groupId>
-    <artifactId>alfresco-sdk-parent</artifactId>
-    <version>1.1.1</version>
+    <groupId>com.redpill-linpro.alfresco</groupId>
+    <artifactId>alfresco-base</artifactId>
+    <version>1.1.1.2</version>
   </parent>
-  <!-- Here we realize the connection with the Alfresco selected platform (e.g.version and edition) -->
-  <dependencyManagement>
-    <dependencies>
-      <!-- This will import the dependencyManagement for all artifacts in the selected Alfresco plaftorm (see http://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#Importing_Dependencies) NOTE: You still need to define dependencies in your POM, but you can omit version 
-        as it's enforced by this dependencyManagement. NOTE: It defaults to the latest version this SDK pom has been tested with, but alfresco version can/should be overridden in your project's pom -->
-      <dependency>
-        <groupId>${alfresco.groupId}</groupId>
-        <artifactId>alfresco-platform-distribution</artifactId>
-        <version>${alfresco.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
 
-  <!-- No more repos are needed since they will be inherited by the parent POM. This is needed to download the alfresco-plaftorm POM. -->
   <repositories>
     <repository>
-      <id>alfresco-artifacts</id>
-      <url>https://artifacts.alfresco.com/nexus/content/groups/public</url>
-    </repository>
-    <repository>
-      <id>alfresco-artifacts-snapshots</id>
-      <url>https://artifacts.alfresco.com/nexus/content/groups/public-snapshots</url>
+      <id>redpill-linpro</id>
+      <url>http://maven.redpill-linpro.com/nexus/content/groups/public</url>
+      <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>daily</updatePolicy>
+      </snapshots>
     </repository>
   </repositories>
 
