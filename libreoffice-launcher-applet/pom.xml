@@ -4,7 +4,7 @@
   <parent>
     <groupId>com.redpill-linpro.alfresco.libreoffice</groupId>
     <artifactId>libreoffice-online-edit-parent</artifactId>
-    <version>1.2.0</version>
+    <version>1.2.1</version>
   </parent>
   <artifactId>libreoffice-launcher-applet</artifactId>
   <packaging>jar</packaging>
@@ -26,6 +26,7 @@
             <manifestEntries>
               <!-- <Trusted-Only>true</Trusted-Only> -->
               <Trusted-Library>true</Trusted-Library>
+              <Permissions>all-permissions</Permissions>
             </manifestEntries>
           </archive>
         </configuration>
