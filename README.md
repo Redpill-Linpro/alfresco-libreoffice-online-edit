@@ -6,6 +6,8 @@ This module is sponsored by Redpill Linpro AB - http://www.redpill-linpro.com.
 Description
 -----------
 
+The module is an addon to Alfresco which makes it possible to edit documents online in LibreOffice over CMIS from the browser. This allows for a seamless integration of the open source document suite LibreOffice with Alfresco, making it easy to adopt an open source alternative for document management in your organization.
+
 This module consists of three sub-modules, one module which produces a signed Java applet, one module which produces a Firefox Addon and the last one creates an Alfresco Share customization module.
 
 The Java applet is used to launch LibreOffice and is included in the customization module. After LibreOffice has been launched the applet is closed and everything after that is LibreOffice doing its work.
