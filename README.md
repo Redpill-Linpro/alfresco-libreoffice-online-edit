@@ -44,7 +44,7 @@ Building with maven:
 Module is packaged as amp and the resulting amp will end up in ./libreoffice-online-edit-share/target/
 
 Signing the Java applet with your own certificates:
-* To sign the Java applet with your own certificates, create a new keystore and change the configuration in ./libreoffice-online-edit-applet/pom.xml with your own keystore settings and rerun the build script.
+* To sign the Java applet with your own certificates, create a new keystore and change the configuration in ./libreoffice-launcher-applet/pom.xml with your own keystore settings and rerun the build script.
 
 ```
   <configuration>
