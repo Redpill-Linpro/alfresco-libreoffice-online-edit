@@ -18,6 +18,20 @@ The Firefox Addon can be used to launch LibreOffice. If installed it will be the
 
 Further detailed instructions will be added to the Wiki.
 
+Localization
+------------
+Translations of the following languages are distributed along with this module:
+* English
+* Swedish
+* Danish
+* Norwegian
+* German
+* Russian
+* French
+* Dutch
+ 
+Thanks to everyone who has contributed with localizations of this module. If you are missing a language, please create a translation and make a pull request and it will be included in the package.
+
 Compatibility
 -------------
 
@@ -29,8 +43,6 @@ Other client requirements for the module are (other versions may work but is unt
 * LibreOffice 4.1 is installed
 * Java 1.7 available as a browser plugin and that java is allowed to run signed applets.
 * For Alfresco SSL endpoints, only valid certificates will work. Self signed certificates on the Alfresco side will not work. 
-
-**Note** SSL support is broken in all released LibreOffice versions. As of now we are awaiting a fix in LibreOffice which may appear in a later version of LibreOffice. In the meantime, go ahead and vote/comment on the LibreOffice issue https://bugs.freedesktop.org/show_bug.cgi?id=72277 to speed up fixing of the bug.
 
 Building
 --------
@@ -99,7 +111,8 @@ If you use Firefox you will get a message suggesting that you should download an
 
 Known issues
 ------------
-Currently LibreOffice has a bug which prevents checking out documents from within LibreOffice. Checking out the document in Alfresco first and then starting editing of it will work.
+* Currently LibreOffice has a bug which prevents checking out documents from within LibreOffice. Checking out the document in Alfresco first and then starting editing of it will work.
+* SSL support is broken in all released LibreOffice versions. As of now we are awaiting a fix in LibreOffice which may appear in a later version of LibreOffice. In the meantime, go ahead and vote/comment on the LibreOffice issue https://bugs.freedesktop.org/show_bug.cgi?id=72277 to speed up fixing of the bug.
 
 License
 -------
