@@ -77,7 +77,7 @@ This module relies on that the Alfresco Share setting "libreoffice-cmis-base-url
 An example configuration:
 Edit (or create the file if it does not exist) tomcat/shared/classes/alfresco/web-extension/share-config-custom.xml.
 
-Please note that this section has changed since the 1.1.0 release of this module. This setting now points to the cmis endpoint to use, not the Alfresco context. The endpoint address for Alfresco 4.2.x is usually http://localhost:8080/alfresco/api/-default-/public/cmis/versions/1.0/atom. For Alfresco 4.1.x it is usually http://localhost:8080/alfresco/cmisatom.
+Please note that this section has changed since the 1.1.0 release of this module. This setting now points to the cmis endpoint to use, not the Alfresco context. The endpoint address for Alfresco 4.2.x is usually http://localhost:8080/alfresco/api/-default-/public/cmis/versions/1.0/atom. For Alfresco 4.1.x it is usually http://localhost:8080/alfresco/cmisws/RepositoryService?wsdl.
 
 ```
 <alfresco-config>
