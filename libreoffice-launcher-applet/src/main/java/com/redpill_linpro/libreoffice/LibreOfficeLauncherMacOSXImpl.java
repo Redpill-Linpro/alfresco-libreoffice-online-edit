@@ -48,18 +48,19 @@ public class LibreOfficeLauncherMacOSXImpl implements LibreOfficeLauncher {
 
         for (int i = 0; i < binaryLocations.length; i++)
           cmd.append((i == 0 ? "" : " || ") + binaryLocations[i] + " \"" + params + "\" ");
-
-        rt.exec(new String[] { "sh", "-c", cmd.toString() });
-
+        
         System.out.println("Command: " + cmd);
+        rt.exec(new String[] { cmd.toString() });        
 
         System.out.println("Process started");
       } catch (IOException e) {
         JOptionPane.showMessageDialog(null, "Failed to start LibreOffice, commandline: " + cmd.toString(), "Error", JOptionPane.ERROR_MESSAGE);
+        e.printStackTrace();
       }
 
     } catch (UnsupportedEncodingException e1) {
       JOptionPane.showMessageDialog(null, "Invalid URL for LibreOffice", "Error", JOptionPane.ERROR_MESSAGE);
+      e1.printStackTrace();
     }
   }
 
