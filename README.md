@@ -35,12 +35,12 @@ Thanks to everyone who has contributed with localizations of this module. If you
 Compatibility
 -------------
 
-The module is tested with Alfresco Enterprise 4.2.0 but may work with other versions of Alfresco Enterprise and Community.
+The module is tested with Alfresco Enterprise 4.1.7.3 and 4.2.0 but may work with other versions of Alfresco Enterprise and Community.
 
-It has been verified to work with Ubuntu Linux (13.10), Windows 7, MacOSX (10.8.3).
+It has been verified to work with Ubuntu Linux (14.04), Windows 7, MacOSX (10.9.5).
 
 Other client requirements for the module are (other versions may work but is untested):
-* LibreOffice 4.1 is installed
+* LibreOffice 4.3.1 or later is installed
 * Java 1.7 available as a browser plugin and that java is allowed to run signed applets.
 * For Alfresco SSL endpoints, only valid certificates will work. Self signed certificates on the Alfresco side will not work. 
 
@@ -63,10 +63,10 @@ Signing the Java applet with your own certificates:
 ```
   <configuration>
     <keystore>src/main/keystore/signing-jar.keystore</keystore>
-		<alias>applet</alias>
-		<storepass>applet</storepass>
-		<keypass>applet</keypass>
-	</configuration>
+    <alias>applet</alias>
+    <storepass>applet</storepass>
+    <keypass>applet</keypass>
+  </configuration>
 ```
 
 Configuration
@@ -77,7 +77,7 @@ This module relies on that the Alfresco Share setting "libreoffice-cmis-base-url
 An example configuration:
 Edit (or create the file if it does not exist) tomcat/shared/classes/alfresco/web-extension/share-config-custom.xml.
 
-Please note that this section has changed since the 1.1.0 release of this module. This setting now points to the cmis endpoint to use, not the Alfresco context. The endpoint address for Alfresco 4.2.x is usually http://localhost:8080/alfresco/api/-default-/public/cmis/versions/1.0/atom. For Alfresco 4.1.x it is usually http://localhost:8080/alfresco/cmisws/RepositoryService?wsdl.
+Please note that this section has changed since the 1.1.0 release of this module. This setting now points to the cmis endpoint to use, not the Alfresco context. The endpoint address for Alfresco 4.2.x is usually http://localhost:8080/alfresco/api/-default-/public/cmis/versions/1.0/atom. For Alfresco 4.1.x it is usually http://localhost:8080/alfresco/cmisws/RepositoryService?wsdl or http://localhost:8080/alfresco/cmisatom.
 
 ```
 <alfresco-config>
@@ -111,8 +111,7 @@ If you use Firefox you will get a message suggesting that you should download an
 
 Known issues
 ------------
-* Currently LibreOffice has a bug which prevents checking out documents from within LibreOffice. Checking out the document in Alfresco first and then starting editing of it will work.
-* SSL support is broken in all released LibreOffice versions. As of now we are awaiting a fix in LibreOffice which may appear in a later version of LibreOffice. In the meantime, go ahead and vote/comment on the LibreOffice issue https://bugs.freedesktop.org/show_bug.cgi?id=72277 to speed up fixing of the bug.
+* Currently no known issues
 
 License
 -------
