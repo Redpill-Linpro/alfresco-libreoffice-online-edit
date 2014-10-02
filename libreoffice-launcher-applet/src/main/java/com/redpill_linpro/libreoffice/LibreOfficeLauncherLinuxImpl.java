@@ -28,38 +28,39 @@ import java.io.UnsupportedEncodingException;
 import javax.swing.JOptionPane;
 
 /**
- * Linux implementation of the LibreOffice launcher. Tries a few well-known installation locations for LibreOffice.
+ * Linux implementation of the LibreOffice launcher. Tries a few well-known
+ * installation locations for LibreOffice.
+ * 
  * @author Marcus Svensson <marcus.svensson (at) redpill-linpro.com>
- *
+ * 
  */
 public class LibreOfficeLauncherLinuxImpl implements LibreOfficeLauncher {
-	@Override
-	public void launchLibreOffice(String protocol, String hostname,
-			String port, String cmisContext, String repositoryId, String filePath) {
-		Runtime rt = Runtime.getRuntime();
-		try {
-			String params = LibreOfficeLauncherHelper.generateLibreOfficeOpenUrl(protocol, hostname, port, cmisContext, repositoryId, filePath);
-			StringBuffer cmd = new StringBuffer();
-			try {
-				String[] binaryLocations = {"soffice", "/usr/bin/soffice"};
-				
-				for (int i=0; i<binaryLocations.length; i++)
-		            cmd.append( (i==0  ? "" : " || " ) + binaryLocations[i] +" \"" + params + "\" ");
+  @Override
+  public void launchLibreOffice(String cmisUrl, String repositoryId, String filePath) {
+    Runtime rt = Runtime.getRuntime();
+    try {
+      String params = LibreOfficeLauncherHelper.generateLibreOfficeOpenUrl(cmisUrl, repositoryId, filePath);
+      StringBuffer cmd = new StringBuffer();
+      try {
+        String[] binaryLocations = { "soffice", "/usr/bin/soffice" };
 
-				rt.exec(new String[] { "sh", "-c", cmd.toString() });
-				
-				System.out.println("Command: "+cmd);
-				
-				System.out.println("Process started");
-			} catch (IOException e) {
-				JOptionPane.showMessageDialog(null, "Failed to start LibreOffice, commandline: "+cmd.toString(), "Error",
-	                    JOptionPane.ERROR_MESSAGE);
-			}
-			
-		} catch (UnsupportedEncodingException e1) {
-			JOptionPane.showMessageDialog(null, "Invalid URL for LibreOffice", "Error",
-                    JOptionPane.ERROR_MESSAGE);
-		}		
-	}
+        for (int i = 0; i < binaryLocations.length; i++)
+          cmd.append((i == 0 ? "" : " || ") + binaryLocations[i] + " \"" + params + "\" ");
+
+        System.out.println("Command: sh -c " + cmd);
+        
+        rt.exec(new String[] { "sh", "-c", cmd.toString() });        
+
+        System.out.println("Process started");
+      } catch (IOException e) {
+        JOptionPane.showMessageDialog(null, "Failed to start LibreOffice, commandline: " + cmd.toString(), "Error", JOptionPane.ERROR_MESSAGE);
+        e.printStackTrace();
+      }
+
+    } catch (UnsupportedEncodingException e1) {
+      JOptionPane.showMessageDialog(null, "Invalid URL for LibreOffice", "Error", JOptionPane.ERROR_MESSAGE);
+      e1.printStackTrace();
+    }
+  }
 
 }

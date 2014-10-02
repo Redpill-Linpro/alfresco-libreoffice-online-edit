@@ -1,94 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>com.redpill-linpro.alfresco.libreoffice</groupId>
-		<artifactId>libreoffice-online-edit-parent</artifactId>
-		<version>1.1.0</version>
-	</parent>
-	<artifactId>libreoffice-launcher-ff</artifactId>
-	<packaging>pom</packaging>
-	<name>Firefox Addon for launching LibreOffice</name>
-	<description>Firefox Addon for launching LibreOffice</description>
-	<build>
-		<finalName>libreoffice-launcher-${project.version}</finalName>
-		  
-		<resources>
-	      <resource>
-	        <directory>src/main/xpi</directory>
-	        <filtering>true</filtering>
-	        <includes>
-	          <include>**/*</include>
-	        </includes>
-	      </resource>
-     	</resources>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.redpill-linpro.alfresco.libreoffice</groupId>
+    <artifactId>libreoffice-online-edit-parent</artifactId>
+    <version>1.2.1</version>
+  </parent>
+  <artifactId>libreoffice-launcher-ff</artifactId>
+  <packaging>pom</packaging>
+  <name>Firefox Addon for launching LibreOffice</name>
+  <description>Firefox Addon for launching LibreOffice</description>
+  <build>
+    <finalName>libreoffice-launcher-${project.version}</finalName>
 
-		<plugins>
+    <resources>
+      <resource>
+        <directory>src/main/xpi</directory>
+        <filtering>true</filtering>
+        <includes>
+          <include>**/*</include>
+        </includes>
+      </resource>
+    </resources>
 
-		      <plugin>
-		        <artifactId>maven-resources-plugin</artifactId>
-		        <version>2.6</version>
-		        <executions>
-		          <execution>
-		            <id>copy-resources</id>
-		            <!-- here the phase you need -->
-		            <phase>validate</phase>
-		            <goals>
-		              <goal>copy-resources</goal>
-		            </goals>
-		            <configuration>
-		              <outputDirectory>${project.build.directory}/xpi</outputDirectory>
-		              <resources>          
-		                <resource>
-		                  <directory>src/main/xpi</directory>
-		                  <filtering>true</filtering>
-		                </resource>
-		              </resources>              
-		            </configuration>            
-		          </execution>
-		        </executions>
-		      </plugin>
-		<plugin>
-		    <artifactId>maven-antrun-plugin</artifactId>
-		    <version>1.7</version>
-		    <executions>
-		      <execution>
-		      	<id>zip-to-xpi</id>
-		      	<phase>package</phase>
-		        <configuration>
-		          <target>
-		            <copy file="${project.build.directory}/${project.build.finalName}-xpi.zip"
-		              tofile="${project.build.directory}/${project.build.finalName}.xpi" />
-		          </target>
-		        </configuration>
-		        <goals>
-		         <goal>run</goal>
-		        </goals>
-		      </execution>
-		    </executions>
-		  </plugin>
+    <plugins>
 
-			<plugin>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<version>2.4</version>
-				<configuration>
-				    <descriptors>
-				        <descriptor>assembly.xml</descriptor>
-				    </descriptors>
-				</configuration>
-				<executions>
-				    <execution>
-				        <id>xpi</id>
-				        <phase>prepare-package</phase>
-				        <goals>
-				            <goal>single</goal>
-				        </goals>
-				    </execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
+      <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>2.6</version>
+        <executions>
+          <execution>
+            <id>copy-resources</id>
+            <!-- here the phase you need -->
+            <phase>validate</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/xpi</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>src/main/xpi</directory>
+                  <filtering>true</filtering>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <version>1.7</version>
+        <executions>
+          <execution>
+            <id>zip-to-xpi</id>
+            <phase>package</phase>
+            <configuration>
+              <target>
+                <copy file="${project.build.directory}/${project.build.finalName}-xpi.zip" tofile="${project.build.directory}/${project.build.finalName}.xpi" />
+              </target>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>2.4</version>
+        <configuration>
+          <descriptors>
+            <descriptor>assembly.xml</descriptor>
+          </descriptors>
+        </configuration>
+        <executions>
+          <execution>
+            <id>xpi</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 
 
 </project>
