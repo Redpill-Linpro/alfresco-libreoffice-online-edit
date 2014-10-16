@@ -45,12 +45,9 @@ public class LibreOfficeLauncherMacOSXImpl implements LibreOfficeLauncher {
       StringBuffer cmd = new StringBuffer();
       try {
         String[] binaryLocations = { "/Applications/LibreOffice.app/Contents/MacOS/soffice" };
-
-        for (int i = 0; i < binaryLocations.length; i++)
-          cmd.append((i == 0 ? "" : " || ") + binaryLocations[i] + " \"" + params + "\" ");
-        
-        System.out.println("Command: " + cmd);
-        rt.exec(new String[] { cmd.toString() });        
+        cmd.append(binaryLocations[0] + " " + params);       
+        System.out.println("Command: " + cmd.toString());       
+        rt.exec(cmd.toString());
 
         System.out.println("Process started");
       } catch (IOException e) {
