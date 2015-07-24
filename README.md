@@ -29,7 +29,8 @@ Translations of the following languages are distributed along with this module:
 * Russian
 * French
 * Dutch
- 
+* Portuguese (Brazilian) by Ambiente Livre ( http://www.ambientelivre.com.br ) 
+
 Thanks to everyone who has contributed with localizations of this module. If you are missing a language, please create a translation and make a pull request and it will be included in the package.
 
 Compatibility
@@ -42,12 +43,12 @@ It has been verified to work with Ubuntu Linux (14.04), Windows 7, MacOSX (10.9.
 Other client requirements for the module are (other versions may work but is untested):
 * LibreOffice 4.3.1 or later is installed
 * Java 1.7 available as a browser plugin and that java is allowed to run signed applets.
-* For Alfresco SSL endpoints, only valid certificates will work. Self signed certificates on the Alfresco side will not work. 
+* For Alfresco SSL endpoints, only valid certificates will work. Self signed certificates on the Alfresco side will not work.
 
 Building
 --------
 
-This module is based on the Alfresco Maven SDK and requires Maven >= 3.0.4, a Java 1.7 compatible compiler (eg. Oracle JDK or OpenJDK). You will also need git to clone the repository. The master branch will always hold the latest stable version of the module. 
+This module is based on the Alfresco Maven SDK and requires Maven >= 3.0.4, a Java 1.7 compatible compiler (eg. Oracle JDK or OpenJDK). You will also need git to clone the repository. The master branch will always hold the latest stable version of the module.
 
 Cloning the repository:
 * git clone git://github.com/Redpill-Linpro/alfresco-libreoffice-online-edit.git
@@ -93,11 +94,11 @@ Please note that this section has changed since the 1.1.0 release of this module
 Installation
 ------------
 
-To install this module in Alfresco use the Alfresco Module Management tool. *Note* The module is a share module and should only be installed in Alfresco Share. 
+To install this module in Alfresco use the Alfresco Module Management tool. *Note* The module is a share module and should only be installed in Alfresco Share.
 
 * Upload the amp file to your amps_share directory in your Alfresco installation.
 * Stop Alfresco Share
-* Run java -jar bin/alfresco-mmt.jar install amps_share/libreoffice-online-edit-share-x.x.x.amp tomcat/webapps/share.war 
+* Run java -jar bin/alfresco-mmt.jar install amps_share/libreoffice-online-edit-share-x.x.x.amp tomcat/webapps/share.war
 * Clean out temporary share files and old unpackaded share war (remove tomcat/webapps/share and tomcat/work/Catalina)
 * Start Alfresco Share
 * Activate the module from the Share Module Deployment page: http://localhost:8080/share/page/modules/deploy
