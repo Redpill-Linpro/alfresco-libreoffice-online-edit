@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 Redpill Linpro AB
+ * Copyright (C) 2016 Redpill Linpro AB
  *
  * This file is part of LibreOffice online edit module for Alfresco
  *

@@ -4,11 +4,11 @@
   <parent>
     <groupId>com.redpill-linpro.alfresco.libreoffice</groupId>
     <artifactId>libreoffice-online-edit-parent</artifactId>
-    <version>1.2.3</version>
+    <version>1.2.4-SNAPSHOT</version>
   </parent>
   <artifactId>libreoffice-launcher-ff</artifactId>
   <packaging>pom</packaging>
-  <name>Firefox Addon for launching LibreOffice</name>
+  <name>Alfresco LibreOffice Edit Online - Firefox Addon for launching LibreOffice</name>
   <description>Firefox Addon for launching LibreOffice</description>
   <build>
     <finalName>libreoffice-launcher-${project.version}</finalName>

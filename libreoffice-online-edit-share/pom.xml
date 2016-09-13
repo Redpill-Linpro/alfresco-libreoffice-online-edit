@@ -4,11 +4,11 @@
   <parent>
     <groupId>com.redpill-linpro.alfresco.libreoffice</groupId>
     <artifactId>libreoffice-online-edit-parent</artifactId>
-    <version>1.2.3</version>
+    <version>1.2.4-SNAPSHOT</version>
   </parent>
   <artifactId>libreoffice-online-edit-share</artifactId>
   <packaging>amp</packaging>
-  <name>Alfresco Share Module for LibreOffice Edit Online functionality</name>
+  <name>Alfresco LibreOffice Edit Online - Share</name>
   <description>Alfresco Share Module for LibreOffice Edit Online functionality</description>
 
   <properties>

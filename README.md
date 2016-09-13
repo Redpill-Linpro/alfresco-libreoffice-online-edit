@@ -91,7 +91,7 @@ Please note that this section has changed since the 1.1.0 release of this module
 ```
 
 
-Installation
+Server installation
 ------------
 
 To install this module in Alfresco use the Alfresco Module Management tool. *Note* The module is a share module and should only be installed in Alfresco Share.
@@ -102,6 +102,12 @@ To install this module in Alfresco use the Alfresco Module Management tool. *Not
 * Clean out temporary share files and old unpackaded share war (remove tomcat/webapps/share and tomcat/work/Catalina)
 * Start Alfresco Share
 * Activate the module from the Share Module Deployment page: http://localhost:8080/share/page/modules/deploy
+
+Client installation
+-------------------
+This module now use client packages for Windows and Mac OSX to register file handles. Download the LoCmis app on Mac and place it under Applications and run it once. On windows download locmis.reg and locmis.bat. Put the bat file under c:\ and run the locmis.reg. If the bat file is put somewhere else than under c:\ then update the locmis.reg file before running it with the correct path.
+
+Doing this will register the locmis url handle which allows for launching libreoffice cmis on all browsers both on Mac and on Windows.
 
 Usage
 -----
