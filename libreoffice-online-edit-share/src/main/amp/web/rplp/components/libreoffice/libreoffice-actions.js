@@ -156,7 +156,12 @@
         var cmisSubPath = alf_cmis_url + "#";
         cmisSubPath += alf_repository_id;
 
-        filePath = filePath + encodeURIComponent(cmisSubPath) + alf_file_path;
+        if (YAHOO.env.ua.ie > 0) {
+          //For IE encode the cmis path twice. For some reason IE removes the encoding before sending the command to the url handler
+          filePath = filePath + encodeURIComponent(encodeURIComponent(cmisSubPath)) + alf_file_path;
+        } else {
+          filePath = filePath + encodeURIComponent(cmisSubPath) + alf_file_path;
+        }
 
         window.location.href = filePath;
       };
