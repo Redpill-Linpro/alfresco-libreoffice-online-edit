@@ -105,9 +105,15 @@ To install this module in Alfresco use the Alfresco Module Management tool. *Not
 
 Client installation
 -------------------
-This module now use client packages for Windows and Mac OSX to register file handles. Download the LoCmis app on Mac and place it under Applications and run it once. On windows download locmis.reg and locmis.bat. Put the bat file under c:\ and run the locmis.reg. If the bat file is put somewhere else than under c:\ then update the locmis.reg file before running it with the correct path.
+This module now use client packages for Mac OSX, Windows and Ubuntu to register file handles. 
+Mac OSX:
+Download the LoCmis app on Mac and place it under Applications and run it once.
+Windows:
+Download locmis.reg and locmis.bat. Put the bat file under c:\ and run the locmis.reg. If the bat file is put somewhere else than under c:\ then update the locmis.reg file before running it with the correct path.
+Ubuntu:
+Download locmis.desktop and locmis.sh. Put the desktop file under /usr/share/applications/. Put the sh file under ~/bin/.
 
-Doing this will register the locmis url handle which allows for launching libreoffice cmis on all browsers both on Mac and on Windows.
+Doing this will register the locmis url handle which allows for launching libreoffice cmis on all browsers both on Mac, Windows and Ubuntu.
 
 Usage
 -----
