@@ -34,6 +34,7 @@ Translations of the following languages are distributed along with this module:
 * French
 * Dutch
 * Portuguese (Brazilian) by Ambiente Livre ( http://www.ambientelivre.com.br ) 
+* Spanish
 
 Thanks to everyone who has contributed with localizations of this module. If you are missing a language, please create a translation and make a pull request and it will be included in the package.
 
