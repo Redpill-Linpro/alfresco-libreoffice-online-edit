@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=TerminalURL
-Exec=~/bin/locmis.sh %u
+Exec=locmis.sh %u
 Type=Application
 NoDisplay=true
 Categories=System;
