@@ -1,7 +1,9 @@
 A LibreOffice Online Edit Module for Alfresco
 =============================================
 
-This module is sponsored by Redpill Linpro AB - http://www.redpill-linpro.com.
+This module is sponsored by:
+* Redpill Linpro AB - http://www.redpill-linpro.com
+* Alingsås Kommun
 
 Description
 -----------
@@ -15,6 +17,8 @@ The Java applet is used to launch LibreOffice and is included in the customizati
 The Java applet is signed using a self-signed certificate. See instructions in the "Building" section on how to sign the build with your own certificates.
 
 The Firefox Addon can be used to launch LibreOffice. If installed it will be the first choise for Firefox users. If it not installed, or disabled, the Java applet will be used instead.
+
+There is also an option to install url handlers on each client to avoid the use of plugins.
 
 Further detailed instructions will be added to the Wiki.
 
@@ -36,13 +40,13 @@ Thanks to everyone who has contributed with localizations of this module. If you
 Compatibility
 -------------
 
-The module is tested with Alfresco Enterprise 4.1.7.3 and 4.2.0 but may work with other versions of Alfresco Enterprise and Community.
+The module is tested with Alfresco Enterprise 5.0 but may work with other versions of Alfresco Enterprise and Community.
 
-It has been verified to work with Ubuntu Linux (14.04), Windows 7, MacOSX (10.9.5).
+It has been verified to work with Ubuntu Linux (16.04), Windows 7, MacOSX (10.12).
 
 Other client requirements for the module are (other versions may work but is untested):
-* LibreOffice 4.3.1 or later is installed
-* Java 1.7 available as a browser plugin and that java is allowed to run signed applets.
+* LibreOffice 5 or later is installed
+* If applet is to be used Java 1.7 available as a browser plugin and that java is allowed to run signed applets.
 * For Alfresco SSL endpoints, only valid certificates will work. Self signed certificates on the Alfresco side will not work.
 
 Building
@@ -106,11 +110,14 @@ To install this module in Alfresco use the Alfresco Module Management tool. *Not
 Client installation
 -------------------
 This module now use client packages for Mac OSX, Windows and Ubuntu to register file handles. 
-Mac OSX:
+
+### Mac OS
 Download the LoCmis app on Mac and place it under Applications and run it once.
-Windows:
+
+### Windows
 Download locmis.reg and locmis.bat. Put the bat file under c:\ and run the locmis.reg. If the bat file is put somewhere else than under c:\ then update the locmis.reg file before running it with the correct path.
-Ubuntu:
+
+### Ubuntu
 Download locmis.desktop and locmis.sh. Put the desktop file under /usr/share/applications/. Put the sh file under ~/bin/.
 
 Doing this will register the locmis url handle which allows for launching libreoffice cmis on all browsers both on Mac, Windows and Ubuntu.
@@ -118,9 +125,15 @@ Doing this will register the locmis url handle which allows for launching libreo
 Usage
 -----
 
-After the module has been activated, you should have a new action available to you in the document library and in the document details page. Click it to open the document with LibreOffice.
+After the module has been installed it needs to be activated in Share. There are three share modules available:
 
-If you use Firefox you will get a message suggesting that you should download and install the Firefox Addon to launch LibreOffice. If the module is not installed, the fallback solution is to use the Java Applet.
+1. LibreOffice Online Edit Module
+2. LibreOffice Online Edit Module - Url handler actions
+3. LibreOffice Online Edit Module - Java Applet and Firefox plugin actions
+
+Activate #1 and either #2 or #3 depending on your use case. Now you should have a new action available to you in the document library and in the document details page. Click it to open the document with LibreOffice.
+
+If module #3 is used and you use Firefox you will get a message suggesting that you should download and install the Firefox Addon to launch LibreOffice. If the module is not installed, the fallback solution is to use the Java Applet.
 
 Known issues
 ------------
@@ -134,4 +147,5 @@ This application is licensed under the LGPLv3 License. See the [LICENSE file](LI
 Authors
 -------
 
-Marcus Svensson - Redpill Linpro AB
+Marcus Svartmark - Redpill Linpro AB
+Jimmie Aleksic - Redpill Linpro AB
