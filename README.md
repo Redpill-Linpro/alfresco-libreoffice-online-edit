@@ -29,6 +29,7 @@ Translations of the following languages are distributed along with this module:
 * Russian
 * French
 * Dutch
+* Spanish
  
 Thanks to everyone who has contributed with localizations of this module. If you are missing a language, please create a translation and make a pull request and it will be included in the package.
 
