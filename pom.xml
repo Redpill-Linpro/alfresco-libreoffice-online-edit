@@ -31,10 +31,10 @@
 
   <groupId>com.redpill-linpro.alfresco.libreoffice</groupId>
   <artifactId>libreoffice-online-edit-parent</artifactId>
-  <version>1.2.3</version>
+  <version>1.2.4-SNAPSHOT</version>
   <packaging>pom</packaging>
-  <name>Parent project for LibreOffice Online Edit functionality for Alfresco</name>
-
+  <name>Alfresco LibreOffice Edit Online</name>
+  <description>Parent project for LibreOffice Online Edit functionality for Alfresco</description>
   <modules>
     <module>libreoffice-launcher-applet</module>
     <module>libreoffice-launcher-ff</module>
@@ -43,14 +43,25 @@
 
   <developers>
     <developer>
-      <id>marcus.svensson</id>
-      <name>Marcus Svensson</name>
-      <email>marcus.svensson (at) redpill-linpro.com</email>
+      <id>mars</id>
+      <name>Marcus Svartmark</name>
+      <email>marcus.svartmark (at) redpill-linpro.com</email>
       <organization>Redpill Linpro AB</organization>
       <organizationUrl>http://www.redpill-linpro.com</organizationUrl>
       <roles>
         <role>Founder</role>
         <role>Architect</role>
+        <role>Developer</role>
+      </roles>
+      <timezone>+1</timezone>
+    </developer>
+    <developer>
+      <id>jimmie</id>
+      <name>Jimmie Aleksic</name>
+      <email>jimmie (at) redpill-linpro.com</email>
+      <organization>Redpill Linpro AB</organization>
+      <organizationUrl>http://www.redpill-linpro.com</organizationUrl>
+      <roles>
         <role>Developer</role>
       </roles>
       <timezone>+1</timezone>

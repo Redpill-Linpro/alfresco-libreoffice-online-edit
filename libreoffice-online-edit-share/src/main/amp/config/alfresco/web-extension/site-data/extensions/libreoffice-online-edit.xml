@@ -1,122 +1,168 @@
 
 <extension>
-	<modules>
-		<module>
-			<id>LibreOffice Online Edit Module</id>
-			<version>${project.version}</version>
-			<customizations>
-				<customization>
-					<targetPackageRoot>org.alfresco</targetPackageRoot>
-					<sourcePackageRoot>com.redpill_linpro.alfresco.share.customization</sourcePackageRoot>
-				</customization>
-			</customizations>
-			<configurations>
-				<config evaluator="string-compare" condition="DocLibCustom">
-					<dependencies>
-						<js src="rplp/components/libreoffice/libreoffice-actions.js" />
-					</dependencies>
-				</config>
+  <modules>
+    <module>
+      <id>LibreOffice Online Edit Module</id>
+      <version>${project.version}</version>
+      <customizations>
+        <customization>
+          <targetPackageRoot>org.alfresco</targetPackageRoot>
+          <sourcePackageRoot>com.redpill_linpro.alfresco.share.customization</sourcePackageRoot>
+        </customization>
+      </customizations>
+      <configurations>
+        <config evaluator="string-compare" condition="DocLibCustom">
+          <dependencies>
+            <js src="rplp/components/libreoffice/libreoffice-actions.js" />
+          </dependencies>
+        </config>
 
-				<config evaluator="string-compare" condition="DocLibActions"
-					replace="false">
-					<actions>
-						<action id="document-edit-online-libreoffice" type="javascript"
-							label="actions.document.edit-online-libreoffice" icon="document-edit-online">
-							<param name="function">onActionLibreOfficeEditOnline</param>
-							<permissions>
-								<permission allow="true">Write</permission>
-							</permissions>
-							<evaluator>evaluator.doclib.action.libreoffice.editable
-							</evaluator>
-							<evaluator>evaluator.doclib.action.libreoffice.onlineEditMimetype
-							</evaluator>
-						</action>
-					</actions>
-					<actionGroups>
-						<actionGroup id="document-browse">
-							<action index="205" id="document-edit-online-libreoffice" />
-						</actionGroup>
-						<actionGroup id="document-details">
-							<action index="205" id="document-edit-online-libreoffice" />
-						</actionGroup>
-					</actionGroups>
-				</config>
-			</configurations>
-			<components>
-                <!-- For Alfresco 4.1 versions -->
-				<component>
-					<scope>template</scope>
-					<region-id>document-actions</region-id>
-					<source-id>document-details</source-id>
-					<sub-components>
-						<sub-component id="inject-repository-url" index="100">
-							<url>/components/document-details/inject-repository-url</url>
-						</sub-component>
-					</sub-components>
-				</component>
-				<component>
-					<scope>template</scope>
-					<region-id>documentlist</region-id>
-					<source-id>documentlibrary</source-id>
-					<sub-components>
-						<sub-component id="inject-repository-url" index="100">
-							<url>/components/document-details/inject-repository-url</url>
-						</sub-component>
-					</sub-components>
-				</component>
-				<component>
-					<scope>template</scope>
-					<region-id>documentlist</region-id>
-					<source-id>repository</source-id>
-					<sub-components>
-						<sub-component id="inject-repository-url" index="100">
-							<url>/components/document-details/inject-repository-url</url>
-						</sub-component>
-					</sub-components>
-				</component>
+      </configurations>
+      <components>
+        <!-- For Alfresco 4.1 versions -->
+        <component>
+          <scope>template</scope>
+          <region-id>document-actions</region-id>
+          <source-id>document-details</source-id>
+          <sub-components>
+            <sub-component id="inject-repository-url" index="100">
+              <url>/components/document-details/inject-repository-url</url>
+            </sub-component>
+          </sub-components>
+        </component>
+        <component>
+          <scope>template</scope>
+          <region-id>documentlist</region-id>
+          <source-id>documentlibrary</source-id>
+          <sub-components>
+            <sub-component id="inject-repository-url" index="100">
+              <url>/components/document-details/inject-repository-url</url>
+            </sub-component>
+          </sub-components>
+        </component>
+        <component>
+          <scope>template</scope>
+          <region-id>documentlist</region-id>
+          <source-id>repository</source-id>
+          <sub-components>
+            <sub-component id="inject-repository-url" index="100">
+              <url>/components/document-details/inject-repository-url</url>
+            </sub-component>
+          </sub-components>
+        </component>
 
-				<!-- For Alfresco 4.2 versions -->
-				<component>
-					<scope>template</scope>
-					<region-id>documentlist_v2</region-id>
-					<source-id>documentlibrary</source-id>
-					<sub-components>
-						<sub-component id="inject-repository-url" index="100">
-							<url>/components/document-details/inject-repository-url</url>
-						</sub-component>
-					</sub-components>
-				</component>
-				<component>
-					<scope>template</scope>
-					<region-id>documentlist_v2</region-id>
-					<source-id>repository</source-id>
-					<sub-components>
-						<sub-component id="inject-repository-url" index="100">
-							<url>/components/document-details/inject-repository-url</url>
-						</sub-component>
-					</sub-components>
-				</component>
-                <component>
-                  <scope>template</scope>
-                  <region-id>documentlist_v2</region-id>
-                  <source-id>myfiles</source-id>
-                  <sub-components>
-                    <sub-component id="inject-repository-url" index="100">
-                      <url>/components/document-details/inject-repository-url</url>
-                    </sub-component>
-                  </sub-components>
-                </component>
-                <component>
-                  <scope>template</scope>
-                  <region-id>documentlist_v2</region-id>
-                  <source-id>sharedfiles</source-id>
-                  <sub-components>
-                    <sub-component id="inject-repository-url" index="100">
-                      <url>/components/document-details/inject-repository-url</url>
-                    </sub-component>
-                  </sub-components>
-                </component>
-			</components>
-		</module>
-	</modules>
+        <!-- For Alfresco 4.2 versions -->
+        <component>
+          <scope>template</scope>
+          <region-id>documentlist_v2</region-id>
+          <source-id>documentlibrary</source-id>
+          <sub-components>
+            <sub-component id="inject-repository-url" index="100">
+              <url>/components/document-details/inject-repository-url</url>
+            </sub-component>
+          </sub-components>
+        </component>
+        <component>
+          <scope>template</scope>
+          <region-id>documentlist_v2</region-id>
+          <source-id>repository</source-id>
+          <sub-components>
+            <sub-component id="inject-repository-url" index="100">
+              <url>/components/document-details/inject-repository-url</url>
+            </sub-component>
+          </sub-components>
+        </component>
+        <component>
+          <scope>template</scope>
+          <region-id>documentlist_v2</region-id>
+          <source-id>myfiles</source-id>
+          <sub-components>
+            <sub-component id="inject-repository-url" index="100">
+              <url>/components/document-details/inject-repository-url</url>
+            </sub-component>
+          </sub-components>
+        </component>
+        <component>
+          <scope>template</scope>
+          <region-id>documentlist_v2</region-id>
+          <source-id>sharedfiles</source-id>
+          <sub-components>
+            <sub-component id="inject-repository-url" index="100">
+              <url>/components/document-details/inject-repository-url</url>
+            </sub-component>
+          </sub-components>
+        </component>
+      </components>
+    </module>
+    <module>
+      <id>LibreOffice Online Edit Module - Java Applet and Firefox plugin actions</id>
+      <version>${project.version}</version>
+      <configurations>
+        <config evaluator="string-compare" condition="DocLibCustom">
+          <dependencies>
+            <js src="rplp/components/libreoffice/libreoffice-actions.js" />
+          </dependencies>
+        </config>
+
+        <config evaluator="string-compare" condition="DocLibActions"
+                replace="false">
+          <actions>
+            <action id="document-edit-online-libreoffice-applet" type="javascript"
+                    label="actions.document.edit-online-libreoffice" icon="document-edit-online">
+              <param name="function">onActionLibreOfficeEditOnlineApplet</param>
+              <permissions>
+                <permission allow="true">Write</permission>
+              </permissions>
+              <evaluator>evaluator.doclib.action.libreoffice.editable</evaluator>
+              <evaluator>evaluator.doclib.action.libreoffice.onlineEditMimetype</evaluator>
+            </action>
+          </actions>
+          <actionGroups>
+            <actionGroup id="document-browse">
+              <action index="206" id="document-edit-online-libreoffice-applet" />
+            </actionGroup>
+            <actionGroup id="document-details">
+              <action index="206" id="document-edit-online-libreoffice-applet" />
+            </actionGroup>
+          </actionGroups>
+        </config>
+      </configurations>
+			
+    </module>
+    <module>
+      <id>LibreOffice Online Edit Module - Url handler actions</id>
+      <version>${project.version}</version>
+      <configurations>
+        <config evaluator="string-compare" condition="DocLibCustom">
+          <dependencies>
+            <js src="rplp/components/libreoffice/libreoffice-actions.js" />
+          </dependencies>
+        </config>
+
+        <config evaluator="string-compare" condition="DocLibActions"
+                replace="false">
+          <actions>
+            <action id="document-edit-online-libreoffice-url-handler" type="javascript"
+                    label="actions.document.edit-online-libreoffice" icon="document-edit-online">
+              <param name="function">onActionLibreOfficeEditOnlineUrlHandler</param>
+              <permissions>
+                <permission allow="true">Write</permission>
+              </permissions>
+              <evaluator>evaluator.doclib.action.libreoffice.editable</evaluator>
+              <evaluator>evaluator.doclib.action.libreoffice.onlineEditMimetype</evaluator>
+            </action>
+          </actions>
+          <actionGroups>
+            <actionGroup id="document-browse">
+              <action index="206" id="document-edit-online-libreoffice-url-handler" />
+            </actionGroup>
+            <actionGroup id="document-details">
+              <action index="206" id="document-edit-online-libreoffice-url-handler" />
+            </actionGroup>
+          </actionGroups>
+        </config>
+      </configurations>
+			
+    </module>
+  </modules>
 </extension>

@@ -4,13 +4,18 @@
   <parent>
     <groupId>com.redpill-linpro.alfresco.libreoffice</groupId>
     <artifactId>libreoffice-online-edit-parent</artifactId>
-    <version>1.2.3</version>
+    <version>1.2.4-SNAPSHOT</version>
   </parent>
   <artifactId>libreoffice-launcher-applet</artifactId>
   <packaging>jar</packaging>
-  <name>Applet for application loading for LibreOffice Edit Online functionality</name>
+  <name>Alfresco LibreOffice Edit Online - Applet</name>
   <description>Applet for application loading for LibreOffice Edit Online functionality</description>
-
+  <properties>
+    <signing.keystore>src/main/keystore/signing-jar.keystore</signing.keystore>
+    <signing.alias>applet</signing.alias>
+    <signing.storepass>applet</signing.storepass>
+    <signing.keypass>applet</signing.keypass>
+  </properties>
   <build>
     <finalName>libreoffice-${project.version}</finalName>
     <plugins>
@@ -50,10 +55,10 @@
           </execution>
         </executions>
         <configuration>
-          <keystore>src/main/keystore/signing-jar.keystore</keystore>
-          <alias>applet</alias>
-          <storepass>applet</storepass>
-          <keypass>applet</keypass>
+          <keystore>${signing.keystore}</keystore>
+          <alias>${signing.alias}</alias>
+          <storepass>${signing.storepass}</storepass>
+          <keypass>${signing.keypass}</keypass>
         </configuration>
       </plugin>
     </plugins>
